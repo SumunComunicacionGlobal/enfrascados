@@ -1,0 +1,86 @@
+.home #masthead  {
+    background-color: var(--wp--preset--color--primary-80) !important;
+}
+
+@media (max-width: 781px) {
+    .wp-block-group.favs-title {
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+}
+
+
+@keyframes rotate-imagen {
+	0% {
+		transform: rotate(-5deg);
+	}
+
+	100% {
+		transform: rotate(var(--rotation));	
+	}
+}
+
+@keyframes rotateHero {
+    0% {
+        transform: translateY(200px) rotate(-18deg);
+        
+    }
+    
+    100% {
+        transform: translateY(0px) rotate(0deg);
+        transform-origin: center center;
+    }
+}
+
+@keyframes move-up-imagen {
+	0% {
+		transform: translateY(-100px);
+	}
+
+	100% {
+		transform: translateY(50px);	
+	}
+}
+
+.rotate-img {
+    --rotation: 20deg;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .rotate-img {
+      animation: rotate-imagen linear both;
+      animation-timeline: view();
+      transform-origin: center; /* Ajusta el punto de origen según tus necesidades */
+    } 
+
+    .tag-enfrascados {
+        animation: move-up-imagen linear both;
+        animation-timeline: view();
+        transform-origin: center; /* Ajusta el punto de origen según tus necesidades */
+    }
+
+    .rotate-hero {
+        animation: rotateHero ease .5s;
+        animation-timeline: view();
+        transform-origin: center; /* Ajusta el punto de origen según tus necesidades */
+        
+    }
+  }
+}
+
+
+main {
+    animation: bodyAnimation ease-in-out 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+ 
+@keyframes bodyAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}

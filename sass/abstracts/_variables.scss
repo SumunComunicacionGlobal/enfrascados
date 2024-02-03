@@ -1,0 +1,54 @@
+
+// 1rem (16px) is a great number to start as a base unit
+$base-unit: 'rem';
+$spacing-unit: 16;
+$base-unit-variable: '--space-base-unit';
+
+
+// Values in rem unit
+$spacing-values-rem: (
+  space-0: 0, // 0px
+  space-025: 0.25, // 4px
+  space-05: 0.5, // 4px
+  space-1: 1, // 16px
+  space-2: 1.5, // 24px
+  space-3: 2, // 32px
+  space-4: 2.5, // 40px
+  space-5: 3.5, // 56px
+  space-6: 4, // 64px
+  space-7: 4.5, // 72px
+  space-8: 5, // 80px
+  space-9: 6, // 96px
+  space-10: 7,  // 112px
+  space-20: 12.5,  // 200px
+  space-30: 20, // 320px
+  space-40: 25 // 400px
+);
+
+// Values in px unit for each function to convert px to rem
+$spacing-values: (
+  space-025: 4,
+  space-05: 8,
+  space-1: 16,
+  space-2: 24,
+  space-3: 32,
+  space-4: 40,
+  space-5: 56,
+  space-6: 64,
+  space-7: 72,
+  space-8: 80,
+  space-9: 96,
+  space-10: 112,
+  space-20: 200,
+  space-30: 320,
+  space-40: 400
+);
+
+:root {
+    #{$base-unit-variable}: 1#{$base-unit};
+    @each $key, $value in $spacing-values {
+        $rem-value: $value / $spacing-unit;
+        --#{$key} : #{$rem-value}#{$base-unit};
+    }
+}
+

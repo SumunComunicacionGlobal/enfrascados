@@ -1,0 +1,130 @@
+.home #hero {
+    display: none;
+}
+
+
+// Hero Homepage
+#hero-homepage {
+    .title--hero {
+        animation: heroAnimationText ease 2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+        opacity: 0;
+        min-width: 14.5em;
+        max-width: 40rem;
+
+        #mark-hero {
+            margin-top: -1rem;
+        }
+    }
+
+    .img--hero {
+        animation: heroAnimationImg ease 2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+        opacity: 0;
+        max-width: 30rem;
+
+        img {
+            filter: drop-shadow(-1em 4rem 2rem rgba(0, 0, 0, 0.25));
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #hero-homepage {
+
+        .title--hero {
+            #mark-hero {
+                max-width: 8.5rem;
+            }
+        }
+
+        .img--hero {
+            animation: heroAnimationImgMobile ease 2s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            animation-delay: 1s;
+        }
+    }
+}
+
+// Hero para categorías de productos
+@media (max-width: 480px) {
+    #hero {
+        .wp-block-columns {
+            flex-direction: column-reverse;
+
+            .wp-block-group {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+
+                p, h1, h2 {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+// Animaciones para Hero Homepage
+@keyframes heroAnimationText {
+    0% {
+        opacity: 0;
+        transform: translateY(1.5rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes heroAnimationImg {
+    0% {
+        opacity: 0;
+        transform-origin: center center;
+        transform: translateX(0px) rotate(-18deg);
+    }
+    
+    100% {
+        transform: translateX(-9dvw) rotate(0deg);
+        transform-origin: center center;
+        opacity: 1;
+    }
+}
+
+@keyframes heroAnimationImgMobile {
+    0% {
+        opacity: 0;
+        transform: translate(0px, 2rem) rotate(-18deg);
+        transform-origin: center center;
+        scale: 1;
+    }
+    
+    100% {
+        transform: translate(-1dvw, -0.5rem) rotate(0deg);
+        transform-origin: center center;
+        opacity: 1;
+        scale: 1.7;
+    }
+}
+
+@keyframes draw {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+  
+#drawline1 {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 4s cubic-bezier(0.6, -0.28, 0.74, 0.05) forwards;
+    //animation-delay: 2s;
+}

@@ -1,0 +1,63 @@
+// Helpers for margin and padding spacing. How to use: class="mt-1", class="pb-5", etc.
+
+//$sides: (top, bottom, left, right); 
+//
+//@each $key, $value in $spacing-values-rem {
+//  @each $side in $sides {
+//    .m#{str-slice($side, 0, 1)}#{str-slice($key, 6)} {
+//      margin-#{$side}: #{$value}#{$base-unit};
+//    }
+//    .p#{str-slice($side, 0, 1)}#{str-slice($key, 6)} {
+//      padding-#{$side}: #{$value}#{$base-unit};
+//    }
+//  }
+//}
+//
+//@each $key, $value in $spacing-values-rem {
+//  .ma#{str-slice($key, 6)} {
+//    margin: #{$value}#{$base-unit};
+//  }
+//  .pa#{str-slice($key, 6)} {
+//    padding: #{$value}#{$base-unit};
+//  }
+//} 
+
+// Mixin para clases de ocultar en diferentes tamaños de dispositivos
+@mixin hide-on-device($device) {
+  @if $device == mobile {
+    @media (max-width: 767px) {
+      .hidden-mobile {
+        display: none !important;
+      }
+    }
+  } @else if $device == tablet {
+    @media (min-width: 768px) and (max-width: 991px) {
+      .hidden-tablet {
+        display: none !important;
+      }
+    }
+  } @else if $device == desktop {
+    @media (min-width: 992px) {
+      .hidden-desktop {
+        display: none !important;
+      }
+    }
+  } @else {
+    @warn "El dispositivo no es válido. Use 'mobile', 'tablet', o 'desktop'.";
+  }
+}
+
+// Uso del mixin para generar las clases
+@include hide-on-device(mobile);
+@include hide-on-device(tablet);
+@include hide-on-device(desktop);
+
+// Loops to enumerate the classes for grid columns.
+@for $i from 1 through 9 {
+
+	.grid-columns-#{$i} {
+		display: grid;
+		gap: var(--space-3);
+		grid-template-columns: repeat($i, 1fr);
+	}
+}

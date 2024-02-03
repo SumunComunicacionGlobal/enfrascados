@@ -1,0 +1,30 @@
+ol.has-background, ul.has-background {
+    padding: 0;
+}
+
+ul.is-style-separator-list {
+	margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        border-bottom: 1px dashed var(wp--custom--color--neutral-40);
+		padding: var(--space-1) 0;
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            text-decoration: none;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transition: translate .2s ease-in;
+            color: inherit;
+
+            &:hover {
+                translate: var(--space-05);
+                cursor: pointer;
+            }
+        }
+    }
+}

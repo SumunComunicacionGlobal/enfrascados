@@ -1,0 +1,20 @@
+{
+    "name": "acf/slider",
+    "title": "Slider",
+    "category": "design",
+    "icon": "slides",
+    "keywords": ["Slider", "Carrousel", "Text"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "slider.php"
+    },
+    "supports": {
+        "align" : false,
+        "align_text": true,
+        "multiple": true,
+        "color": {
+            "background": false
+        },
+        "jsx": true
+    }
+}

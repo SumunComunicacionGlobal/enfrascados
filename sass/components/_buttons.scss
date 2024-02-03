@@ -1,0 +1,24 @@
+.wp-block-button.is-style-with-arrow .wp-block-button__link {
+
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+
+	&:hover {
+		box-shadow: -2px 4px 0px 0px var(--wp--preset--color--primary-100);
+		transition: box-shadow 0.3s ease-in;
+		
+		&::after {
+			padding-left: 1rem;
+			transition: padding-left 0.3s ease;
+		}
+	}
+
+	&:after {
+		content: url(./assets/icons/arrow-right.svg);
+		height: 24px;
+		padding-left: .5rem;
+		transition: padding-left 0.3s ease;
+	}
+
+}

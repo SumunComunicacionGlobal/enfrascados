@@ -1,0 +1,87 @@
+.is-style-group-horizontal-scroll {
+    gap: var(--wp--preset--spacing--10);
+    padding: var(--wp--preset--spacing--10);
+    margin: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    display: flex;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    & > .wp-block-group  {
+        flex: 0 0 auto !important;
+        max-width: 296px;
+        margin-block-start: 0;
+
+        @media (max-width: 480px)  {
+            max-width: 242px;
+        }
+
+        &:first-child {
+            margin-left: var(--wp--preset--spacing--10);
+        }
+    }
+}
+
+.is-style-group-fade-contents {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 20vh;
+    --duration: 16s;
+    --slides: 4;
+
+    & > [class*="wp-block-"] {
+        
+        
+        //animation-fill-mode: forwards;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: fadeText 10s infinite ease-in-out;
+        min-width: 100%;
+        margin: auto;
+
+        &:nth-child(1) {
+            animation-delay: -8s;
+        }
+
+        &:nth-child(2) {
+            animation-delay: -6s;
+            
+        }
+
+        &:nth-child(3) {
+            animation-delay: -4s;
+            
+        }
+
+        &:nth-child(3) {
+            animation-delay: -20s;
+            
+        }
+
+    }
+}
+
+@keyframes fadeText {
+    0%,
+    5%,
+    100% {
+        filter: blur(0px);
+        opacity: 1;
+    }
+ 
+    50%,
+    80% {
+        filter: blur(180px);
+        opacity: 0;
+    }
+}
+

@@ -1,0 +1,37 @@
+{
+  "name": "enfrascados",
+  "version": "1.0.0",
+  "description": "Theme WP Enfrascados",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SumunComunicacionGlobal/enfrascados.git"
+  },
+  "keywords": [
+    "sass",
+    "wordpress",
+    "woocommerce"
+  ],
+  "author": "Alvaro Rubioc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SumunComunicacionGlobal/enfrascados/issues"
+  },
+  "homepage": "https://github.com/SumunComunicacionGlobal/enfrascados#readme",
+  "devDependencies": {
+    "@wordpress/scripts": "^26.14.0",
+    "dir-archiver": "^1.1.1",
+    "node-sass": "^9.0.0",
+    "uglify-js": "^3.16.1"
+  },
+  "scripts": {
+    "watch": "node-sass sass/ -o ./ --source-map true --output-style compressed --indent-type tab --indent-width 1 -w",
+    "compile:css": "node-sass sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
+    "compile:editorcss": "node-sass sass/style-editor.scss -o ./ ",
+    "compile:js": "uglifyjs js/*.js > assets/js/enfrascados.min.js",
+    "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
+    "lint:js": "wp-scripts lint-js 'assets/js/*.js'",
+    "bundle": "dir-archiver --src . --dest ../enfrascados.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock",
+    "sync": "browser-sync start --proxy 'http://localhost:8888/enfrascados/' --files ['**/*.php', '*.*']",
+    "dev": "npm run watch & npm run sync"
+  }
+}
