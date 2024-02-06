@@ -14,7 +14,7 @@
 			"palette": [
 				{
 					"slug": "foreground",
-					"color": "var(--wp--custom--color--neutral-90)",
+					"color": "var(--wp--custom--color--neutral-100)",
 					"name": "Foreground"
 				},
 				{
@@ -96,6 +96,11 @@
 					"slug": "accent-100",
 					"color": "#8DB574",
 					"name": "Accent 100"
+				},
+				{
+					"slug": "gray-30",
+					"color": "var(--wp--custom--color--neutral-30)",
+					"name": "Gray"
 				}
 			],
 			"gradients": [],

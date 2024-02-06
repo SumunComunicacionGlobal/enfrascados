@@ -1,6 +1,8 @@
 <?php
 
 // Change icon from Woocommerce Blocks: customer-account, mini-cart
+add_filter('render_block', 'woo_icon_account_render_block_core', null, 2);
+
 function woo_icon_account_render_block_core (string $block_content, array $block)
 {
 	if ( 
@@ -22,8 +24,6 @@ function woo_icon_account_render_block_core (string $block_content, array $block
 	return $block_content;
 }
 
-add_filter('render_block', 'woo_icon_account_render_block_core', null, 2);
-
 
 // Allow HTML in term (category, tag) descriptions
 foreach ( array( 'pre_term_description' ) as $filter ) {
@@ -39,9 +39,34 @@ foreach ( array( 'term_description' ) as $filter ) {
 
 
 // Add content below the products block to show the fragments CPT
+add_action('woocommerce_after_main_content', 'add_content_below_to_products_block');
+
 function add_content_below_to_products_block() {
     get_template_part('template-hooks/fragments');
 }
 
-add_action('woocommerce_after_main_content', 'add_content_below_to_products_block');
+
+// Elimina todas las tabs existentes y las sustituye por un acordeón
+add_filter('render_block', 'wcsuccess_remove_all_product_tabs', null, 2);
+
+function wcsuccess_remove_all_product_tabs(string $block_content, array $block) {
+	if (
+		'woocommerce/product-details' === $block['blockName']
+		&& !is_admin()
+		&& !wp_is_json_request()
+	) {
+		ob_start();
+        get_template_part('template-hooks/woo-accordion');
+        $block_content = ob_get_clean();
+
+		// Elimina los títulos (h2)
+        $block_content = preg_replace('#<h2>(.*?)</h2>#', '', $block_content);
+
+		return $block_content;
+	}
+
+	return $block_content;
+}
+
+
 

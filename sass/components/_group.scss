@@ -12,7 +12,7 @@
         display: none;
     }
 
-    & > .wp-block-group  {
+    & > .wp-block-group, & > .wc-block-product  {
         flex: 0 0 auto !important;
         max-width: 296px;
         margin-block-start: 0;
@@ -22,7 +22,7 @@
         }
 
         &:first-child {
-            margin-left: var(--wp--preset--spacing--10);
+            //margin-left: var(--wp--preset--spacing--10);
         }
     }
 }

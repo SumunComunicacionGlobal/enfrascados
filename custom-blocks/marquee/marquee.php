@@ -14,14 +14,14 @@
 
 
 
-// Support custom "anchor" values.
-$anchor = '';
-if ( ! empty( $block['anchor'] ) ) {
-    $anchor = 'id="' . esc_attr( $block['anchor'] ) . '" ';
+// Create id attribute allowing for custom "anchor" value.
+$id = 'marquee-' . $block['id'];
+if( !empty($block['anchor']) ) {
+    $id = $block['anchor'];
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
-$class_name = 'auto-fade-carrousel-block';
+$class_name = '';
 if ( ! empty( $block['className'] ) ) {
     $class_name .= ' ' . $block['className'];
 }
@@ -29,21 +29,13 @@ if ( ! empty( $block['align'] ) ) {
     $class_name .= ' align' . $block['align'];
 }
 
-$my_block_template = array(
-    array( 'core/heading', array(
-        'placeholder' => 'Añade un título',
-        'level' => 2,
-    ) ),
-    array( 'core/paragraph', array(
-        'placeholder' => 'Añade un párrafo',
-    ) ),
-);
+    $content = get_field('runing_text') ?: 'Tu texto aquí...';
 ?>
 
-<div <?php echo $anchor; ?>class="<?php echo esc_attr( $class_name ); ?>">
-
-	<?php the_field( 'fade_text' ); ?>
-
+<div id="<?php echo $id; ?>" <?php echo get_block_wrapper_attributes(); ?>>
+    <div class="wp-block-acf-marquee__inner">
+        <?php echo esc_html($content); ?>
+    </div>
 </div>
 
-    <InnerBlocks template="<?php echo esc_attr( wp_json_encode( $my_block_template ) ); ?>" />
+

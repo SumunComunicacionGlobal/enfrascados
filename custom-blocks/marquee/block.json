@@ -1,0 +1,45 @@
+{
+    "apiVersion": 2,
+    "name": "acf/marquee",
+    "title": "Marquee Runing Text",
+    "category": "design",
+    "icon": "admin-comments",
+    "keywords": ["marquee", "running", "text"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "marquee.php"
+    },
+    "attributes": {
+        "content": {
+            "type": "string",
+            "default": "Tu texto aquí..."
+        },
+        "alignWide": {
+            "type": "string",
+            "default": "alignfull"
+        }
+    },
+    "supports": {
+        "align" : true,
+        "align_text": true,
+        "multiple": true,
+        "className": true,
+        "color": {
+            "text": true,
+            "background": true
+        },
+        "spacing": {
+            "margin": true, 
+            "padding": true, 
+            "blockGap": true
+        },
+        "typography": {
+            "fontSize": true,
+            "__experimentalFontFamily": true
+        },
+        "jsx": true 
+    },
+
+    "style": "file:./style.css",
+    "script": "marquee-js"
+}

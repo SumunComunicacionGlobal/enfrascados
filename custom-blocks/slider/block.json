@@ -1,6 +1,8 @@
 {
     "name": "acf/slider",
     "title": "Slider",
+    "textDomain": "smn_admin",
+    "description": "Slider with options for text and images",
     "category": "design",
     "icon": "slides",
     "keywords": ["Slider", "Carrousel", "Text"],
@@ -9,12 +11,22 @@
         "renderTemplate": "slider.php"
     },
     "supports": {
-        "align" : false,
+        "align" : true,
         "align_text": true,
         "multiple": true,
+        "className": true,
         "color": {
-            "background": false
+            "text": true,
+            "background": true
+        },
+        "spacing": {
+            "margin": true, 
+            "padding": true, 
+            "blockGap": true
         },
         "jsx": true
-    }
+    },
+
+    "style": "file:./style.css",
+    "script": "slider-js"
 }

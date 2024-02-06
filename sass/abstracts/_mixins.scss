@@ -25,23 +25,29 @@
 // Mixin para clases de ocultar en diferentes tamaños de dispositivos
 @mixin hide-on-device($device) {
   @if $device == mobile {
-    @media (max-width: 767px) {
+    @media (max-width: 781px) {
       .hidden-mobile {
         display: none !important;
       }
     }
   } @else if $device == tablet {
-    @media (min-width: 768px) and (max-width: 991px) {
+    @media (min-width: 782px) and (max-width: 991px) {
       .hidden-tablet {
         display: none !important;
       }
     }
-  } @else if $device == desktop {
-    @media (min-width: 992px) {
-      .hidden-desktop {
+  } @else if $device == laptop {
+    @media (min-width: 992px) and (max-width: 1440px) {
+      .hidden-laptop {
         display: none !important;
       }
     }
+  } @else if $device == desktop {
+      @media (min-width: 1441px) {
+        .hidden-desktop {
+          display: none !important;
+        }
+      }
   } @else {
     @warn "El dispositivo no es válido. Use 'mobile', 'tablet', o 'desktop'.";
   }
@@ -50,6 +56,7 @@
 // Uso del mixin para generar las clases
 @include hide-on-device(mobile);
 @include hide-on-device(tablet);
+@include hide-on-device(laptop);
 @include hide-on-device(desktop);
 
 // Loops to enumerate the classes for grid columns.

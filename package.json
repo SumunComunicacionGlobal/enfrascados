@@ -27,11 +27,14 @@
     "watch": "node-sass sass/ -o ./ --source-map true --output-style compressed --indent-type tab --indent-width 1 -w",
     "compile:css": "node-sass sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
     "compile:editorcss": "node-sass sass/style-editor.scss -o ./ ",
-    "compile:js": "uglifyjs js/*.js > assets/js/enfrascados.min.js",
+    "compile:js": "uglifyjs assets/js/*.js > assets/js/enfrascados.min.js",
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
     "lint:js": "wp-scripts lint-js 'assets/js/*.js'",
     "bundle": "dir-archiver --src . --dest ../enfrascados.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock",
     "sync": "browser-sync start --proxy 'http://localhost:8888/enfrascados/' --files ['**/*.php', '*.*']",
     "dev": "npm run watch & npm run sync"
+  },
+  "dependencies": {
+    "swiper": "^11.0.6"
   }
 }

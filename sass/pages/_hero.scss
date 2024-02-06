@@ -5,6 +5,7 @@
 
 // Hero Homepage
 #hero-homepage {
+    
     .title--hero {
         animation: heroAnimationText ease 2s;
         animation-iteration-count: 1;
@@ -51,9 +52,19 @@
     }
 }
 
+
+#hero {
+    .wp-img-hero {
+        transform: translateY(120px);
+    }
+}
+
 // Hero para categorías de productos
-@media (max-width: 480px) {
+@media (max-width: 781px) {
     #hero {
+        .wp-img-hero {
+            transform: translateY(0px);
+        }
         .wp-block-columns {
             flex-direction: column-reverse;
 

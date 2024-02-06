@@ -1,0 +1,65 @@
+/**  Tabs   */
+
+ .woocommerce div.product .woocommerce-tabs ul.tabs  {
+    margin: 0;
+    padding: 0;
+
+    li, li a {
+        width: 100%;
+        border: 0;
+        border-top: 2px solid var(--wp--custom--color--neutral-100);
+        padding: 0 !important;
+        background-color: transparent;
+        margin: 0;
+    }
+
+    .tab-button {
+        position: absolute;
+        width: var(--wp--preset--spacing--30);
+        height: var(--wp--preset--spacing--30);
+        top: 0;
+        right: 0;
+        transform: rotate(0deg);
+        cursor: pointer;
+        z-index: 100;
+        transition: 0.4s cubic-bezier(0.2, 0.6, 0.3, 1.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.tab-button.clicked {
+            transform: rotate(180deg);
+        }
+    }
+
+    .wc-tab {
+        display:block !important;
+        max-height:0;
+        overflow:hidden;
+        transition:.5s;
+    
+        &.active {
+            transition:1s;
+            a {
+                color: var(--wp--custom--color--neutral-100);
+            }
+        }
+    }
+    
+}
+
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li::after,
+.woocommerce div.product .woocommerce-tabs ul.tabs li::before,
+.woocommerce div.product .woocommerce-tabs ul.tabs::before {
+    content: none;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+    border: 0;
+    border-radius: 0;
+}
+
+.wp-block-woocommerce-product-details ul.wc-tabs {
+    border-bottom: 0;
+} 

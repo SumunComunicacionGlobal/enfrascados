@@ -10,34 +10,35 @@
  */
 
 // Create id attribute allowing for custom "anchor" value.
-$id = 'swiper-' . $block['id'];
+$id = 'slick-' . $block['id'];
 if( !empty($block['anchor']) ) {
     $id = $block['anchor'];
 }
 ?>
 
-<div class="tabgroup" id="<?php echo $id; ?>">
+<div class="slick-slider" id="<?php echo $id; ?>">
     <InnerBlocks />
 </div>
 
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<div <?php echo get_block_wrapper_attributes(); ?>>
+    <div class="swiper-pagination"> '#<?php echo esc_attr($id); ?>' </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-scrollbar"></div>
+</div>
 
 <!-- Initialize Swiper -->
 <script>
-	var swiper = new Swiper('#<?php echo esc_attr($id); ?>', {
-    autoHeight: true,
-	navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-        768: {
-          slidesPerView: 1,
-        },
-        1024: {
-          slidesPerView: 2,
-        },
-      },
-	});
+
+jQuery('.slick-slider').slick({
+  dots: true,
+  arrows: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true
+});
+
+
 </script>

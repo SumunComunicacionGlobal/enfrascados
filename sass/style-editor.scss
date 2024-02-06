@@ -20,12 +20,14 @@
 @import "components/cover";
 @import "components/group";
 @import "components/nav";
+@import "components/query";
 @import "components/search";
 
 /*--------------------------------------------------------------
 # WooCommerce
 --------------------------------------------------------------*/
 @import "woocommerce/products";
+@import "woocommerce/tabs";
 
 
 /*--------------------------------------------------------------

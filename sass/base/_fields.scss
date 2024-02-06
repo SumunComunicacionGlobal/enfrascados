@@ -48,3 +48,15 @@ select {
 textarea {
 	width: 100%;
 }
+
+
+input[type="number"] {
+	-moz-appearance: textfield;
+	-webkit-appearance: textfield;
+	appearance: textfield;
+
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		display: none;
+	}
+}

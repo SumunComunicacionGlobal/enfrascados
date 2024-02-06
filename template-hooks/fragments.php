@@ -14,8 +14,6 @@
 
 ?>
 
-<h1>Fragments PARTE</h1>
-
 <div class="wp-block-template-part alignfull">
     
     <?php
