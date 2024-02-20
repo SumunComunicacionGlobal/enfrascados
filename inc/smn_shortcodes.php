@@ -68,7 +68,15 @@ function mostrar_subcategorias_producto($atts) {
 
         // Verificar si hay subcategorías
         if ($subcategorias) {
-            $output = '<div class="wc-block-grid has-3-columns has-multiple-rows has-aligned-buttons"><ul class="wc-block-grid__products subcategories-shortcode">';
+            $output = '<div class="wp-block-grid">';
+            $output .= '<div style="height:100px" aria-hidden="true" class="wp-block-spacer hidden-mobile hidden-tablet"></div>';
+            $output .= '<div class="wp-block-group wp-block-subcategories-shortcode has-secondary-80-color has-text-color is-vertical is-layout-flex wp-block-group-is-layout-flex">';
+            $output .= '<p class="has-mudstone-font-family has-heading-2-font-size">' . __("¿Qué tipo de", "smn_admin") . '</p>';
+            $output .= '<h2 class="wp-block-query-title">' . esc_html($categoria_actual->name) . '</h2>';
+            $output .= '<p class="has-mudstone-font-family has-heading-2-font-size">' . __("estás buscando?", "smn_admin") . '</p>';
+            $output .= '</div>';
+
+            $output .= '<div class="wc-block-grid has-3-columns has-multiple-rows"><ul class="wc-block-grid__products subcategories-shortcode">';
 
             /// Iterar sobre cada subcategoría
             foreach ($subcategorias as $subcategoria) {
@@ -94,19 +102,68 @@ function mostrar_subcategorias_producto($atts) {
                 $output .= '</li>';
             }
 
-            $output .= '</ul></div>';
+            $output .= '</ul></div></div>';
 
             return $output;
         }
     }
 
     // En caso de no encontrar subcategorías o no estar en una categoría de producto
-    return 'No se encontraron subcategorías para mostrar.';
+    return '';
 }
 
 // Registramos el shortcode
 add_shortcode('mostrar_subcategorias_producto', 'mostrar_subcategorias_producto');
 
+
+function mostrar_productos_categoria_actual($atts) {
+    // Obtén la categoría actual
+    $categoria_actual = get_queried_object();
+
+    // Verifica si es una categoría
+    if (is_a($categoria_actual, 'WP_Term') && taxonomy_exists('category')) {
+        // Obtén la ID de la categoría actual
+        $categoria_actual_id = $categoria_actual->term_id;
+
+        // Crea una nueva consulta para obtener los productos de la categoría actual
+        $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => -1,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'category',
+                    'field'    => 'term_id',
+                    'terms'    => $categoria_actual_id,
+                ),
+            ),
+        );
+        $query = new WP_Query($args);
+
+        // Comprueba si la consulta tiene productos
+        if ($query->have_posts()) {
+            ob_start();
+            echo '<ul class="products columns-3">';
+            // Itera sobre cada producto
+            while ($query->have_posts()) {
+                $query->the_post();
+                wc_get_template_part('content', 'product');
+            }
+            echo '</ul>';
+            $output = ob_get_clean();
+
+            // Restablece la consulta principal
+            wp_reset_postdata();
+
+            return $output;
+        }
+    }
+
+    // En caso de no encontrar productos o no estar en una categoría
+    return '';
+}
+
+// Registra el shortcode
+add_shortcode('mostrar_productos_categoria_actual', 'mostrar_productos_categoria_actual');
 
 
 

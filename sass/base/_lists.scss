@@ -8,8 +8,8 @@ ul.is-style-separator-list {
     list-style: none;
 
     li {
-        border-bottom: 1px dashed var(wp--custom--color--neutral-40);
-		padding: var(--space-1) 0;
+        border-bottom: 1px solid;
+		padding: var(--wp--preset--spacing--10) 0;
         display: flex;
         justify-content: space-between;
 
@@ -22,9 +22,10 @@ ul.is-style-separator-list {
             color: inherit;
 
             &:hover {
-                translate: var(--space-05);
+                translate: var(--wp--preset--spacing--20);
                 cursor: pointer;
             }
         }
     }
 }
+

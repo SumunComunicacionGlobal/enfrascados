@@ -9,8 +9,8 @@
 			"custom": false,
 			"defaultPalette": false,
 			"defaultGradients": false,
-			"customDuotone": false,
-			"customGradient": false,
+			"customDuotone": true,
+			"customGradient": true,
 			"palette": [
 				{
 					"slug": "foreground",
@@ -304,7 +304,7 @@
 		},
 		"border": {
 			"color": false,
-			"radius": false,
+			"radius": true,
 			"style": false,
 			"width": false
 		},

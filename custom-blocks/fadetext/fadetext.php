@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Slider Block Template.
+ * Fade text Slider Block Template.
  *
  * @param   array $block The block settings and attributes.
  * @param   string $content The block inner HTML (empty).
@@ -10,40 +10,46 @@
  */
 
 // Create id attribute allowing for custom "anchor" value.
-$id = 'slick-' . $block['id'];
+$id = 'fade-text-' . $block['id'];
 if( !empty($block['anchor']) ) {
     $id = $block['anchor'];
 }
 
 // Obtén el valor de los campos ACF
-$slides_to_show = get_field('slides_to_show');
-
 $slides_dots = get_field('slides_dots');
 $slides_dots_bool = $slides_dots ? 'true' : 'false';
 
-$slides_arrows = get_field('slides_arrows');
-$slides_arrows_bool = $slides_arrows ? 'true' : 'false';
+$text_items = get_field('fade_text_items');
 
-$slides_fade = get_field('slides_arrows');
-$slides_fade_bool = $slides_fade ? 'true' : 'false';
 
 ?>
 <div id="<?php echo $id; ?>" <?php echo get_block_wrapper_attributes(); ?>>
-    <InnerBlocks />
-</div>
 
+<?php
+if( have_rows('fade_text_items') ):
+  
+  while( have_rows('fade_text_items') ): the_row(); 
+    
+    $text = get_sub_field('fade_text_item');
+      echo '<p>'.$text.'</p>';
+        
+  endwhile;
+    
+endif; ?>
+
+</div>
 
 <!-- Initialize Swiper -->
 <script>
 
-jQuery('#<?php echo $id; ?> .acf-innerblocks-container').slick({
-  slidesToShow: <?php echo $slides_to_show; ?>,
+jQuery('#<?php echo $id; ?>').slick({
+  slidesToShow: 1,
   slidesToScroll: 1,
   dots: <?php echo $slides_dots_bool; ?>,
-  arrows: <?php echo $slides_arrows_bool; ?>,
-  fade: <?php echo $slides_fade_bool; ?>,
+  arrows: false,
+  fade: true,
   autoplay: true,
-  infinite: false,
+  infinite: true,
   speed: 500,
   
   responsive: [

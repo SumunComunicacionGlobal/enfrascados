@@ -1,18 +1,13 @@
 <?php
 
 /**
- * Auto Fade Carrousel Template.
+ * Marquee Running text Template.
  *
  * @param   array $block The block settings and attributes.
  * @param   string $content The block inner HTML (empty).
- * @param   bool $is_preview True during backend preview render.
- * @param   int $post_id The post ID the block is rendering content against.
- *          This is either the post ID currently being displayed inside a query loop,
- *          or the post ID of the post hosting this block.
- * @param   array $context The context provided to the block by the post or it's parent block.
+ * @param   bool $is_preview True during AJAX preview.
+ * @param   (int|string) $post_id The post ID this block is saved to.
  */
-
-
 
 // Create id attribute allowing for custom "anchor" value.
 $id = 'marquee-' . $block['id'];

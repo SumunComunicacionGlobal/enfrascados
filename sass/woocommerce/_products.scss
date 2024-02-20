@@ -31,6 +31,16 @@ ul.wc-block-grid__products {
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+
+            @media ($above-mobile) and ($below-tablet) {
+                flex: 1 0 33.33%;
+                max-width: 33.33%;
+            }
+    
+            @media ($above-tablet) {
+                flex: 1;
+            }
         }
     }
     
@@ -247,4 +257,18 @@ ul.wc-block-grid__products {
 
 .single_add_to_cart_button.wp-element-button {
     background-color: var(--wp--custom--color--neutral-100);
+}
+
+
+.btn-woo-category--products {
+    justify-self: center;
+    align-self: center;
+    max-width: 280px;
+}
+
+
+.wp-block-subcategories-shortcode {
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: var(--wp--preset--spacing--40);
 }

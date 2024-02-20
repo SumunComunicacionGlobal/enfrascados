@@ -84,3 +84,24 @@ main {
         opacity: 1;
      }
 }
+
+.wp-block-group .fadetext {
+    .wp-block-cover {
+        
+        img.wp-block-cover__image-background {
+            @media (max-width: 480px)  {
+                max-width: 112px;
+                margin-left: auto;
+                height: auto;
+            }
+        }
+    }
+    
+    
+
+    .wp-block-columns.alignfull {
+        @media (max-width: 480px)  {
+            transform: translateX(-10%);
+        }
+    }
+}

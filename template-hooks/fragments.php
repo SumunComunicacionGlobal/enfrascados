@@ -13,25 +13,26 @@
  */
 
 ?>
-
-<div class="wp-block-template-part alignfull">
     
-    <?php
-        $tax = get_queried_object();
-        $featured_posts = get_field('fragment_cat_product', $tax);
-        if( $featured_posts ):
-        
-            foreach( $featured_posts as $post ): 
+<?php
+    $tax = get_queried_object();
+    $featured_posts = get_field('fragment_cat_product', $tax);
+    if( $featured_posts ):
 
-                // Setup this post for WP functions (variable must be named $post).
-                setup_postdata($post); 
-                the_content();
-                    
-            endforeach;
+        echo '<div class="wp-block-template-part alignfull">';
+    
+        foreach( $featured_posts as $post ): 
 
-        // Reset the global post object so that the rest of the page works correctly.
-        wp_reset_postdata();
-        endif;
-    ?>
+            // Setup this post for WP functions (variable must be named $post).
+            setup_postdata($post); 
+            the_content();
+                
+        endforeach;
 
-</div>
+        echo '</div>';
+
+    // Reset the global post object so that the rest of the page works correctly.
+    wp_reset_postdata();
+    endif;
+?>
+

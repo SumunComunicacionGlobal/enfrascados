@@ -50,6 +50,13 @@ wp.domReady( () => {
 			label: 'Horizontal scroll',
 		},
 	] );
+
+	wp.blocks.registerBlockStyle( 'core/quote', [
+		{
+			name: 'card',
+			label: 'Card style',
+		},
+	] );
 	
 	wp.blocks.registerBlockVariation( 'core/group', [
 		{
@@ -62,6 +69,7 @@ wp.domReady( () => {
 			},
 		},
 	] );
+
 } );
 
 /* ADD data space height to wp-block-spacer in gutenberg */

@@ -3,7 +3,7 @@
     "name": "acf/marquee",
     "title": "Marquee Runing Text",
     "category": "design",
-    "icon": "admin-comments",
+    "icon": "info",
     "keywords": ["marquee", "running", "text"],
     "acf": {
         "mode": "preview",
@@ -40,6 +40,6 @@
         "jsx": true 
     },
 
-    "style": "file:./style.css",
+    "style": "file:./marquee.css",
     "script": "marquee-js"
 }

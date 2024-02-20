@@ -1,0 +1,70 @@
+
+[class*="product_cat-"] {
+    .wc-block-components-product-image {
+        position: relative;
+        --icon-size: 1.5rem;
+
+        &::before, 
+        &::after {
+            content: "";
+            display: block;
+            width: var(--icon-size);
+            height: var(--icon-size);
+            position: absolute;
+            top: .5rem;
+            left: .5rem;
+        }
+    
+    }
+
+    &.product_cat-tarros-alimentacion .wc-block-components-product-image::before {
+        content: url(./assets/icons/tag-alimentacion.svg);
+    }
+
+    &.product_cat-botes-decoracion .wc-block-components-product-image::before {
+        content: url(./assets/icons/tag-decoracion.svg);
+    }
+
+    &.product_cat-botellas-bebidas-alcoholicas .wc-block-components-product-image::before {
+        content: url(./assets/icons/tag-alcohol.svg);
+    }
+
+    &.product_cat-cilindricos .wc-block-components-product-image::after {
+        content: url(./assets/icons/tag-circulo.svg);
+    }
+
+    &.product_cat-cuadrados .wc-block-components-product-image::after {
+        content: url(./assets/icons/tag-cuadrado.svg);
+    }
+
+    &.product_cat-pentagonales .wc-block-components-product-image::after {
+        content: url(./assets/icons/tag-pentagono.svg);
+    }
+
+    &.product_cat-hexagonales .wc-block-components-product-image::after {
+        content: url(./assets/icons/tag-hexagono.svg);
+    }
+
+    &.product_cat-octogonales .wc-block-components-product-image::after {
+        content: url(./assets/icons/tag-octogono.svg);
+    }
+
+    &.product_cat-tarros-alimentacion,
+    &.product_cat-botes-decoracion,
+    &.product_cat-botellas-bebidas-alcoholicas {
+        &.product_cat-cilindricos,
+        &.product_cat-cuadrados,
+        &.product_cat-pentagonales,
+        &.product_cat-hexagonales,
+        &.product_cat-octogonales {
+
+            .wc-block-components-product-image::after {
+                left: calc(var(--icon-size) + .75rem);
+            }
+    
+        }   
+        
+    }
+}
+
+ 

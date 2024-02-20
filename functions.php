@@ -62,7 +62,7 @@ endif;
 add_action( 'wp_enqueue_scripts', 'smn_styles' );
 
 // Enqueue scripts
-require get_template_directory() . '/inc/enqueue-scripts.php';
+require get_template_directory() . '/inc/smn_enqueue-scripts.php';
 
 // Hooks to add content above the navigation block
 require get_template_directory() . '/inc/smn_nav.php';
@@ -75,6 +75,9 @@ require get_template_directory() . '/inc/smn_shortcodes.php';
 
 // WooCommerce
 require get_template_directory() . '/inc/smn_woocommerce.php';
+
+// Dummy content only for development
+require get_template_directory() . '/inc/smn-dummy-content.php';
 
 /* Quitar <p> y <br/> de Contact Form 7 */
 add_filter('wpcf7_autop_or_not', '__return_false');

@@ -1,0 +1,11 @@
+.wp-block-quote {
+    
+    &.is-style-card {
+        border-left: 0;
+        margin: var(--wp--preset--spacing--20);
+    
+        p.has-heading-4-font-size {
+            margin-top: 0;
+        }
+    }
+}

@@ -1,49 +1,46 @@
-// Helpers for margin and padding spacing. How to use: class="mt-1", class="pb-5", etc.
+// Extra Small (mobile)
+$below-mobile-xs: "max-width:480px";
+$above-mobile-xs: "min-width:481px";
 
-//$sides: (top, bottom, left, right); 
-//
-//@each $key, $value in $spacing-values-rem {
-//  @each $side in $sides {
-//    .m#{str-slice($side, 0, 1)}#{str-slice($key, 6)} {
-//      margin-#{$side}: #{$value}#{$base-unit};
-//    }
-//    .p#{str-slice($side, 0, 1)}#{str-slice($key, 6)} {
-//      padding-#{$side}: #{$value}#{$base-unit};
-//    }
-//  }
-//}
-//
-//@each $key, $value in $spacing-values-rem {
-//  .ma#{str-slice($key, 6)} {
-//    margin: #{$value}#{$base-unit};
-//  }
-//  .pa#{str-slice($key, 6)} {
-//    padding: #{$value}#{$base-unit};
-//  }
-//} 
+// Small (tablet)
+$below-mobile: "max-width:781px"; // de 0 a 781px de ancho se muestra
+$above-mobile: "min-width:782px"; // de 782px en adelante se muestra
+
+// Medium (landscape tablet)
+$below-tablet: "max-width:991px";
+$above-tablet: "min-width:992px";
+
+// Large (content max-width)
+$below-laptop: "max-width:1120px";
+$above-laptop: "min-width:1121px";
+
+// Extra Large (content max-width)
+$below-desktop: "max-width:1439px";
+$above-desktop: "min-width:1440px";
+
 
 // Mixin para clases de ocultar en diferentes tamaños de dispositivos
 @mixin hide-on-device($device) {
   @if $device == mobile {
-    @media (max-width: 781px) {
+    @media ($below-mobile) {
       .hidden-mobile {
         display: none !important;
       }
     }
   } @else if $device == tablet {
-    @media (min-width: 782px) and (max-width: 991px) {
+    @media ($above-mobile) and ($below-tablet) {
       .hidden-tablet {
         display: none !important;
       }
     }
   } @else if $device == laptop {
-    @media (min-width: 992px) and (max-width: 1440px) {
+    @media ($above-tablet) and ($below-desktop) {
       .hidden-laptop {
         display: none !important;
       }
     }
   } @else if $device == desktop {
-      @media (min-width: 1441px) {
+      @media ($above-desktop) {
         .hidden-desktop {
           display: none !important;
         }

@@ -1,14 +1,14 @@
 {
-    "name": "acf/slider",
-    "title": "Slider",
+    "name": "acf/fadetext",
+    "title": "Fade Text",
     "textDomain": "smn_admin",
-    "description": "Slider with options for text and images",
+    "description": "Repeater with fade texts slider",
     "category": "design",
     "icon": "slides",
-    "keywords": ["Slider", "Carrousel", "Text"],
+    "keywords": ["Slider", "Fade", "Text"],
     "acf": {
         "mode": "preview",
-        "renderTemplate": "slider.php"
+        "renderTemplate": "fadetext.php"
     },
     "supports": {
         "align" : true,
@@ -30,6 +30,6 @@
         "jsx": true
     },
 
-    "style": "file:./slider.css",
+    "style": "file:./fadetext.css",
     "script": "slider-js"
 }

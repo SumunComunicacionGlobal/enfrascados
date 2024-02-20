@@ -1,11 +1,8 @@
 .wp-block-navigation__responsive-container.is-menu-open {
     max-width: var(--wp--custom--layout--wide);
-    padding: var(wp--custom--layout--block-gap);
+    //padding: var(--wp--custom--layout--block-gap);
     box-shadow: 4px 8px 0px 0px rgba(0, 0, 0, 0.15);
-
-    .wp-block-navigation__responsive-container-content {
-        padding-top: 0;
-    }
+    background-color: var(--wp--preset--color--primary) !important;
 }
 
 .wp-block-navigation__container {
@@ -13,6 +10,7 @@
 }
 
 .wp-block-navigation__responsive-container-content {
+    padding-top: 0;
 
     .wp-block-navigation__search {
         order: 0;
