@@ -1,0 +1,44 @@
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"},"metadata":{"name":"Disclaimer"}} -->
+<div class="wp-block-group" style="margin-top:0;margin-bottom:0"><!-- wp:woocommerce/store-notices {"align":""} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}}},"layout":{"type":"constrained"},"metadata":{"name":"Products"}} -->
+<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+<div class="wp-block-group"><!-- wp:woocommerce/product-results-count /-->
+
+<!-- wp:woocommerce/catalog-sorting /--></div>
+<!-- /wp:group -->
+
+<!-- wp:woocommerce/product-collection {"queryId":0,"query":{"woocommerceAttributes":[],"woocommerceStockStatus":["instock","outofstock","onbackorder"],"taxQuery":[],"isProductCollectionBlock":true,"perPage":10,"pages":0,"offset":0,"postType":"product","order":"asc","orderBy":"title","author":"","search":"","exclude":[],"sticky":"","inherit":true},"tagName":"div","displayLayout":{"type":"flex","columns":4,"shrinkColumns":true},"layout":{"type":"default"}} -->
+<div class="wp-block-woocommerce-product-collection"><!-- wp:woocommerce/product-template {"layout":{"type":"default"}} -->
+<!-- wp:woocommerce/product-image {"isDescendentOfQueryLoop":true} /-->
+
+<!-- wp:post-title {"textAlign":"left","level":3,"isLink":true,"fontSize":"body","fontFamily":"main-font","__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
+
+<!-- wp:post-excerpt {"__woocommerceNamespace":"woocommerce/product-collection/product-summary"} /-->
+
+<!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true,"textAlign":"left","textColor":"secondary","fontFamily":"mudstone","fontSize":"heading-3","style":{"spacing":{"margin":{"bottom":"1rem"}},"elements":{"link":{"color":{"text":"var:preset|color|secondary"}}}}} /-->
+
+<!-- wp:woocommerce/product-rating {"isDescendentOfQueryLoop":true} /-->
+
+<!-- wp:spacer {"height":"24px"} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- /wp:woocommerce/product-template -->
+
+<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
+<!-- wp:query-pagination-previous /-->
+
+<!-- wp:query-pagination-numbers /-->
+
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>
+	No se han encontrado productos que coincidan con tu selección.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:woocommerce/product-collection --></div>
+<!-- /wp:group -->

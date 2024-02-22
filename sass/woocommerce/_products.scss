@@ -272,3 +272,27 @@ ul.wc-block-grid__products {
     gap: 0;
     margin-bottom: var(--wp--preset--spacing--40);
 }
+
+
+.woocommerce .pickup-points img {
+    width: unset;
+}
+
+.woocommerce .wc_payment_method img {
+    display: inline-block;
+    height: 1.2rem;
+    width: auto;
+}
+
+.pickup-points,
+.woocommerce-billing-fields,
+.woocommerce-shipping-fields,
+.woocommerce-MyAccount-navigation,
+.woocommerce-Address,
+.woocommerce-EditAccountForm,
+.woocommerce-address-fields {
+    border: 1px solid var(--wp--preset--neutral-20);
+    padding: 1rem 1rem 2rem;
+    border-radius: var(--wp--custom--border-radius--md);
+    margin-bottom: 3rem;
+}

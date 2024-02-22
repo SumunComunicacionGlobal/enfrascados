@@ -98,7 +98,7 @@ function mostrar_subcategorias_producto($atts) {
                 if ($img_destacada_url) {
                     $output .= '<div class="wc-block-grid__product-image"><img loading="lazy" decoding="async" src="' . esc_url($img_destacada_url) . '" alt="' . esc_attr($subcategoria->name) . '" /></div>';
                 }
-                $output .= '<h2 class="wc-block-grid__product-title"><a class="wc-block-grid__product-link stretched-link" href="' . get_term_link($subcategoria) . '">' . esc_html($subcategoria->name) . '</a></h2>';
+                $output .= '<p class="wc-block-grid__product-title"><a class="wc-block-grid__product-link stretched-link" href="' . get_term_link($subcategoria) . '">' . esc_html($subcategoria->name) . '</a></p>';
                 $output .= '</li>';
             }
 
@@ -116,57 +116,101 @@ function mostrar_subcategorias_producto($atts) {
 add_shortcode('mostrar_subcategorias_producto', 'mostrar_subcategorias_producto');
 
 
-function mostrar_productos_categoria_actual($atts) {
-    // Obtén la categoría actual
-    $categoria_actual = get_queried_object();
+function smn_product_categories_by_id( $atts ) {
+    // Atributos por defecto
+    $atts = shortcode_atts( array(
+        'ids' => '', // IDs de las categorías separadas por comas
+    ), $atts, 'product_categories_by_id' );
 
-    // Verifica si es una categoría
-    if (is_a($categoria_actual, 'WP_Term') && taxonomy_exists('category')) {
-        // Obtén la ID de la categoría actual
-        $categoria_actual_id = $categoria_actual->term_id;
+    // Convertir la lista de IDs en un array
+    $ids = explode( ',', $atts['ids'] );
 
-        // Crea una nueva consulta para obtener los productos de la categoría actual
-        $args = array(
-            'post_type' => 'product',
-            'posts_per_page' => -1,
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'category',
-                    'field'    => 'term_id',
-                    'terms'    => $categoria_actual_id,
-                ),
-            ),
-        );
-        $query = new WP_Query($args);
+    // Iniciar la salida
+    $output = '<div class="woocommerce">';
+    $output .= '<ul class="products">';
 
-        // Comprueba si la consulta tiene productos
-        if ($query->have_posts()) {
-            ob_start();
-            echo '<ul class="products columns-3">';
-            // Itera sobre cada producto
-            while ($query->have_posts()) {
-                $query->the_post();
-                wc_get_template_part('content', 'product');
-            }
-            echo '</ul>';
-            $output = ob_get_clean();
+    // Iterar sobre cada ID
+    foreach ( $ids as $id ) {
+        // Obtener la categoría del producto
+        $category = get_term( $id, 'product_cat' );
 
-            // Restablece la consulta principal
-            wp_reset_postdata();
+        // Comprobar si la categoría existe
+        if ( $category && ! is_wp_error( $category ) ) {
+            // Obtener el enlace a la categoría
+            $link = get_term_link( $category );
 
-            return $output;
+            // Obtener la imagen de la categoría
+            $thumbnail_id = get_woocommerce_term_meta( $category->term_id, 'thumbnail_id', true );
+            $image = wp_get_attachment_url( $thumbnail_id );
+
+            // Obtener el color de fondo
+            $background_color = get_field('color_cat_product', $category);
+
+            // Añadir la categoría a la salida
+            $output .= '<li class="product-category product" style="background-color:' . esc_attr( $background_color ) . ';">';
+            $output .= '<a href="' . esc_url( $link ) . '" aria-label="' . esc_attr( $category->name ) . '">';
+            $output .= '<img src="' . esc_url( $image ) . '" alt="' . esc_attr( $category->name ) . '">';
+            $output .= '<p class="woocommerce-loop-category__title">' . esc_html( $category->name ) . '</p>';
+            $output .= '</a>';
+            $output .= '</li>';
         }
     }
 
-    // En caso de no encontrar productos o no estar en una categoría
-    return '';
+    // Finalizar la salida
+    $output .= '</ul></div>';
+
+    return $output;
 }
-
-// Registra el shortcode
-add_shortcode('mostrar_productos_categoria_actual', 'mostrar_productos_categoria_actual');
+add_shortcode( 'product_categories_by_id', 'smn_product_categories_by_id' );
 
 
-
-
+//function mostrar_productos_categoria_actual($atts) {
+//    // Obtén la categoría actual
+//    $categoria_actual = get_queried_object();
+//
+//    // Verifica si es una categoría
+//    if (is_a($categoria_actual, 'WP_Term') && taxonomy_exists('category')) {
+//        // Obtén la ID de la categoría actual
+//        $categoria_actual_id = $categoria_actual->term_id;
+//
+//        // Crea una nueva consulta para obtener los productos de la categoría actual
+//        $args = array(
+//            'post_type' => 'product',
+//            'posts_per_page' => -1,
+//            'tax_query' => array(
+//                array(
+//                    'taxonomy' => 'category',
+//                    'field'    => 'term_id',
+//                    'terms'    => $categoria_actual_id,
+//                ),
+//            ),
+//        );
+//        $query = new WP_Query($args);
+//
+//        // Comprueba si la consulta tiene productos
+//        if ($query->have_posts()) {
+//            ob_start();
+//            echo '<ul class="products columns-3">';
+//            // Itera sobre cada producto
+//            while ($query->have_posts()) {
+//                $query->the_post();
+//                wc_get_template_part('content', 'product');
+//            }
+//            echo '</ul>';
+//            $output = ob_get_clean();
+//
+//            // Restablece la consulta principal
+//            wp_reset_postdata();
+//
+//            return $output;
+//        }
+//    }
+//
+//    // En caso de no encontrar productos o no estar en una categoría
+//    return '';
+//}
+//
+//// Registra el shortcode
+//add_shortcode('mostrar_productos_categoria_actual', 'mostrar_productos_categoria_actual');
 
 

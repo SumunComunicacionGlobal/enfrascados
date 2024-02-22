@@ -111,6 +111,27 @@ function get_term_class($class, $term_id = 0, $taxonomy = '') {
 
     return $classes;
 }
+
+function smn_change_content_list_title_tag( $block_content, $block ) {
+
+    if ( $block['blockName'] === 'core/post-title' || $block['blockName'] === 'woocommerce/product-title' ) {
+        $block_content = str_replace( 
+            array( '<h4', '<h5'), 
+            '<p', 
+            $block_content 
+        );
+    }
+
+    return $block_content;
+}
+add_filter( 'render_block', 'smn_change_content_list_title_tag', 10, 2 );
  
 
-
+if ( ! function_exists( 'woocommerce_template_loop_product_title' ) ) {
+	/**
+	 * Show the product title in the product loop. By default this is an H2.
+	 */
+	function woocommerce_template_loop_product_title() {
+		echo '<h3 class="woocommerce-loop-product__title">' . get_the_title() . '</h3>';
+	}
+}

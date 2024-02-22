@@ -67,3 +67,4 @@ function wcsuccess_remove_all_product_tabs(string $block_content, array $block) 
 
 	return $block_content;
 }
+
