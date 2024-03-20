@@ -2,10 +2,42 @@
     background-color: var(--wp--preset--color--primary-80) !important;
 }
 
-@media (max-width: 781px) {
+@media ($below-mobile) {
     .wp-block-group.favs-title {
         flex-wrap: nowrap;
         flex-direction: row;
+        align-items: self-start;
+
+        .is-style-text-arrow  {
+            p {
+                transform: rotate(6deg);
+            }
+        }
+    }
+}
+
+.favoritos .wow-tag {
+    margin-top: -4rem;
+    transform: translateX(-40px);
+
+    img {
+        animation: heroAnimationTag 4s infinite;
+    }
+}
+
+@media ($above-mobile) {
+    .wp-block-group.favs-title {
+
+        .is-style-text-arrow  {
+            p {
+                transform: rotate(6deg);
+            }
+            
+            figure {
+                //transform: scaleX(-1) scaleY(-1);
+                transform: scaleX(-1) rotate(90deg);
+            }
+        }
     }
 }
 
@@ -89,7 +121,7 @@ main {
     .wp-block-cover {
         
         img.wp-block-cover__image-background {
-            @media (max-width: 480px)  {
+            @media ($below-mobile)  {
                 max-width: 112px;
                 margin-left: auto;
                 height: auto;
@@ -100,8 +132,33 @@ main {
     
 
     .wp-block-columns.alignfull {
-        @media (max-width: 480px)  {
+        @media ($below-mobile)  {
             transform: translateX(-10%);
+        }
+    }
+}
+
+.porque-enfrascados {
+    background-image: url(./assets/img/bg-tarro-pq-enfrascados.png), url(./assets/img/bg-botella-pq-enfrascados.png);
+    background-position: left top, right top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    mix-blend-mode: hard-light;
+
+    @media ($below-mobile)  {
+        background-size: 100px, 100px;
+    }
+}
+
+.is-style-group-horizontal-scroll {
+    &.motivos {
+        @media ($above-desktop)  {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            padding: 0;
+            max-width: var(--wp--custom--layout--content);
+            margin: 0 auto;
         }
     }
 }

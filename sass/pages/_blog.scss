@@ -4,3 +4,14 @@
     }
 }
 
+
+.blog #hero {
+    background-image: url(./assets/img/bg-tag-bote-blog.png), url(./assets/img/bg-tag-yoenfrasco-blog.png);
+    background-position: left 50%, right 20%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    @media ($below-mobile)  {
+        background-size: 100px, 100px;
+    }
+}

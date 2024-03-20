@@ -17,3 +17,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 20); // Retrasar la ejecución en 500 milisegundos
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Selecciona todos los contenedores de cantidad
+    var quantityContainers = document.querySelectorAll('.quantity');
+
+    // Para cada contenedor de cantidad
+    quantityContainers.forEach(function(quantityContainer) {
+        // Crea los botones de incrementar y decrementar
+        var decreaseButton = document.createElement('button');
+        var increaseButton = document.createElement('button');
+
+        // Añade las clases y el texto a los botones
+        decreaseButton.className = 'decrease';
+        increaseButton.className = 'increase';
+        decreaseButton.textContent = '-';
+        increaseButton.textContent = '+';
+
+        // Inserta los botones en el contenedor de cantidad
+        quantityContainer.insertBefore(decreaseButton, quantityContainer.firstChild);
+        quantityContainer.appendChild(increaseButton);
+
+        // Selecciona el input
+        var input = quantityContainer.querySelector('.input-text');
+
+        // Añade los event listeners a los botones
+        decreaseButton.addEventListener('click', function() {
+            input.stepDown();
+        });
+
+        increaseButton.addEventListener('click', function() {
+            input.stepUp();
+        });
+    });
+});

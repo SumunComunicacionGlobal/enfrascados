@@ -55,7 +55,7 @@
                     top: -0.25rem;
                     transform: translateX(-0.5rem);
                     opacity: 0;
-                    @media (max-width: 480px)  {
+                    @media ($below-mobile)  {
                         top: 0rem;
                     }
                 }
@@ -86,7 +86,7 @@
         order: 3;
         margin-top: var(--wp--preset--spacing--30);
 
-        @media (max-width: 480px)  {
+        @media ($below-mobile)  {
             justify-content: center;
         }
     }
@@ -111,7 +111,7 @@
         &:active, &:focus {
             width: 12rem;
         
-            @media (max-width: 480px) {
+            @media ($below-mobile) {
                 width: 9rem;
                 background-color: var(--wp--preset--color--white);
                 color: initial;

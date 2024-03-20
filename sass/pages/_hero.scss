@@ -15,6 +15,10 @@
         min-width: 14.5em;
         max-width: 40rem;
 
+        @media ($above-desktop) {
+            max-width: 44rem;
+        }
+
         #mark-hero {
             margin-top: -1rem;
         }
@@ -31,10 +35,19 @@
         img {
             filter: drop-shadow(-1em 4rem 2rem rgba(0, 0, 0, 0.25));
         }
+
+        .img--hero-tag {
+            position: absolute;
+            top: 60%;
+            right: 0;
+
+            animation: heroAnimationTag 3s infinite;
+            animation-delay: 1s;
+        }
     }
 }
 
-@media (max-width: 480px) {
+@media ($below-mobile) {
     #hero-homepage {
 
         .title--hero {
@@ -49,6 +62,11 @@
             animation-fill-mode: forwards;
             animation-delay: 1s;
         }
+
+        .img--hero-tag {
+            max-width: 100px;
+            scale: 0.66;
+        }
     }
 }
 
@@ -56,6 +74,52 @@
 #hero {
     .wp-img-hero {
         transform: translateY(120px);
+        
+    }
+
+    .wp-img-hero--container {
+        position: relative;
+
+        &::before {
+            content: url(./assets/img/hero-tags.png);
+            display: block;
+            width: 100%;
+            height: auto;
+            position: absolute;
+            left: -3rem;
+            top: 0;
+            z-index: 2;
+            transform-origin: left;
+
+            @media ($below-mobile)  {
+                scale: 0.66;
+                top: auto;
+                bottom: -8rem;
+            }
+        }
+    }
+
+    .wp-block-term-description h2, .wp-block-term-description .has-heading-2-font-size {
+        position: relative;
+
+        &::before {
+            content: url(./assets/icons/mark-desciption-hero.svg);
+            display: block;
+            width: 100%;
+            scale: 1.33;
+            transform-origin: left;
+
+            @media ($below-mobile)  {
+                scale: 1;
+                top: -8px;
+                text-align: center;
+            }
+
+            height: auto;
+            position: absolute;
+            left: 0;
+            text-align: left;
+        }
     }
 }
 
@@ -138,4 +202,16 @@
     stroke-dashoffset: 1000;
     animation: draw 4s cubic-bezier(0.6, -0.28, 0.74, 0.05) forwards;
     //animation-delay: 2s;
+}
+
+@keyframes heroAnimationTag {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(30deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }

@@ -18,7 +18,7 @@ function mostrar_imagen_destacada_categoria_producto($atts) {
 
         // Si el campo de imagen de ACF no está vacío, muestra la imagen de ACF
         if (!empty($imagen_acf)) {
-            return '<img class="wp-img-hero" src="' . esc_url($imagen_acf['url']) . '" alt="' . esc_attr($imagen_acf['alt']) . '" />';
+            return '<div class="wp-img-hero--container"><img class="wp-img-hero" src="' . esc_url($imagen_acf['url']) . '" alt="' . esc_attr($imagen_acf['alt']) . '" /></div>';
         }
     
         // Verificamos si hay una imagen destacada
@@ -27,7 +27,7 @@ function mostrar_imagen_destacada_categoria_producto($atts) {
             $imagen_destacada_url = wp_get_attachment_url($imagen_destacada_id);
 
             // Mostramos la imagen
-            return '<img class="wp-img-hero" src="' . esc_url($imagen_destacada_url) . '" alt="' . esc_attr($categoria_producto->name) . '" />';
+            return '<div class="wp-img-hero--container"><img class="wp-img-hero" src="' . esc_url($imagen_destacada_url) . '" alt="' . esc_attr($categoria_producto->name) . '" /></div>';
         }
     }
 
@@ -109,7 +109,7 @@ function mostrar_subcategorias_producto($atts) {
     }
 
     // En caso de no encontrar subcategorías o no estar en una categoría de producto
-    return '';
+    return '<div style="height:72px" aria-hidden="true" class="wp-block-spacer hidden-mobile hidden-tablet"></div>';
 }
 
 // Registramos el shortcode

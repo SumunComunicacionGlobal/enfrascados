@@ -12,7 +12,7 @@
 		position: relative;
 		max-height: 3rem;
 
-		@media (max-width: 480px) {
+		@media ($below-mobile) {
 			max-height: 2.875rem;
 		}
 	}

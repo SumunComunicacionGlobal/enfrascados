@@ -67,4 +67,15 @@
     }
 }
 
- 
+button.single_add_to_cart_button {
+    position: relative;
+    display: inline-flex !important;
+    gap: .5rem;
+
+    &::after {
+        content: url(./assets/icons/shop-icon.svg);
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}

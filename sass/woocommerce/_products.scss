@@ -19,6 +19,12 @@ ul.wc-block-grid__products {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    
+    .wp-block-subcategories-shortcode & {
+        @media ($above-tablet) {
+            justify-content: center;
+        }
+    }
         
     &::-webkit-scrollbar {
         display: none;
@@ -41,6 +47,11 @@ ul.wc-block-grid__products {
             @media ($above-tablet) {
                 flex: 1;
             }
+
+            .wc-block-grid__product-image img[src$=".png"] {
+                mix-blend-mode: hard-light;
+            }
+
         }
     }
     
@@ -84,7 +95,7 @@ ul.wc-block-grid__products {
     }
 }
 
-@media (max-width: 480px) {
+@media ($below-mobile) {
     .wc-block-grid {
 
         &[class*="has-"] {
@@ -136,9 +147,13 @@ ul.wc-block-grid__products {
                 display: none;
             }
         }
+
+        img[src$=".png"] {
+            mix-blend-mode: hard-light;
+        }
     }
 
-    @media (max-width: 480px) {
+    @media ($below-mobile) {
         gap: var(--wp--preset--spacing--10);
         padding: var(--wp--preset--spacing--10);
         margin: 0;
@@ -175,7 +190,7 @@ ul.wc-block-grid__products {
     width: 12rem;
     height: 2rem;
     
-    @media (max-width: 480px) {
+    @media ($below-mobile) {
         transform: translateX(-20px) scale(0.77);
     }
 
@@ -295,4 +310,40 @@ ul.wc-block-grid__products {
     padding: 1rem 1rem 2rem;
     border-radius: var(--wp--custom--border-radius--md);
     margin-bottom: 3rem;
+}
+
+
+.product-quantity {
+
+    @media ($below-mobile) {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+}
+
+.quantity {
+    
+    box-shadow: inset 0 0 0 2px var(--wp--custom--color--neutral-100);
+    border-radius: var(--wp--custom--border-radius--rounded);
+    width: fit-content;
+    display: flex;
+
+    button.decrease, button.increase {
+        background-color: var(--wp--custom--color--neutral-100);
+        border: 1px solid var(--wp--custom--color-neutral-20);
+        border-radius: var(--wp--custom--border-radius--rounded);
+        width: 3rem;
+        height: 3rem;
+        color: var(--wp--preset--color--white);
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+
+    input[type="number"] {
+        border: none;
+        margin-right: 0 !important;
+        padding: .5rem;
+    }
 }
