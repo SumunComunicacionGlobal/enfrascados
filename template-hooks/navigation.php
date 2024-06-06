@@ -1,13 +1,3 @@
-<div class="wp-block-navigation__search">
-
-    <?php
-        echo file_get_contents( get_stylesheet_directory_uri() . '/assets/img/cual-es-tu-motivo.svg' );
-
-        $block_content = '<!-- wp:search {"label":"Buscar","showLabel":false,"placeholder":"Ordenar mi despensa...","buttonText":"Buscar","buttonPosition":"button-inside","buttonUseIcon":true,"query":{"post_type":"product"}} /-->';
-        echo do_blocks($block_content);
-    ?>
-</div>
-
 <div class="wp-block-navigation__social">
     <?php
         // Obtén el ID del bloque reutilizable
@@ -24,5 +14,15 @@
                 echo render_block($block);
             }
         }
+    ?>
+</div>
+
+<div class="wp-block-navigation__search">
+
+    <?php
+        echo file_get_contents( get_stylesheet_directory_uri() . '/assets/img/cual-es-tu-motivo.svg' );
+
+        $block_content = '<!-- wp:search {"label":"Buscar","showLabel":false,"placeholder":"Ordenar mi despensa...","buttonText":"Buscar","buttonPosition":"button-inside","buttonUseIcon":true,"query":{"post_type":"product"}} /-->';
+        echo do_blocks($block_content);
     ?>
 </div>
