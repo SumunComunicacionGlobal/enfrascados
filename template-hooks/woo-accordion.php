@@ -17,7 +17,7 @@ if ( ! empty( $tabs ) ) : ?>
         // Nest the tab content with the tab title
         foreach ( $tabs as $key => $tab ) : ?>
 
-            <li class="<?php echo esc_attr( $key ); ?>_tab <?php if($i == 0) echo 'active-tab'; ?>" id="tab-title-<?php echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
+            <li class="<?php echo esc_attr( $key ); ?>_tab <?php if(($i == 0) || ($i=2)) echo 'active-tab'; ?>" id="tab-title-<?php echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
                 <a href="#tab-<?php echo esc_attr( $key ); ?>"><?php echo apply_filters( 'woocommerce_product_' . $key . '_tab_title', esc_html( $tab['title'] ), $key ); ?></a>
                 
                 <div class="tab-button <?php if($i == 0) echo 'clicked'; ?>">
