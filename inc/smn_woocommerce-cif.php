@@ -2,10 +2,6 @@
 // exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
-if ( !current_user_can( 'manage_options' ) ) {
-    return;
-}
-
 define( 'MINIMUM_CART_AMOUNT_FOR_INVOICE', 400 );
 
 add_filter('woocommerce_checkout_fields', 'smn_override_checkout_fields');
