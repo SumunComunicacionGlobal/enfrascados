@@ -75,6 +75,7 @@ require get_template_directory() . '/inc/smn_shortcodes.php';
 
 // WooCommerce
 require get_template_directory() . '/inc/smn_woocommerce.php';
+require get_template_directory() . '/inc/smn_woocommerce-cif.php';
 
 // Dummy content only for development
 require get_template_directory() . '/inc/smn-dummy-content.php';
