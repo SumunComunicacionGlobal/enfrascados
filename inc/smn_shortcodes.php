@@ -41,6 +41,11 @@ add_shortcode('mostrar_imagen_destacada_categoria_producto', 'mostrar_imagen_des
 
 // Shortcode para mostrar subcategorías en una página de archivo de categoría de producto
 function mostrar_subcategorias_producto($atts) {
+
+    // Comprobar el tipo de visualización establecido para la categoría actual
+    $tipo_visualizacion = woocommerce_get_loop_display_mode();
+    if ( $tipo_visualizacion == 'products' ) return false;
+
     // Obtener la categoría actual del producto
     $categoria_actual = get_queried_object();
 
