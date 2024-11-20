@@ -32,29 +32,32 @@ $slides_fade_bool = $slides_fade ? 'true' : 'false';
     <InnerBlocks />
 </div>
 
+<?php if ( !is_admin() ) { ?>
 
-<!-- Initialize Swiper -->
-<script>
+    <!-- Initialize Swiper -->
+    <script>
+    
+    jQuery('#<?php echo $id; ?> .acf-innerblocks-container').slick({
+      slidesToShow: <?php echo $slides_to_show; ?>,
+      slidesToScroll: 1,
+      dots: <?php echo $slides_dots_bool; ?>,
+      arrows: <?php echo $slides_arrows_bool; ?>,
+      fade: <?php echo $slides_fade_bool; ?>,
+      autoplay: true,
+      infinite: false,
+      speed: 500,
+      
+      responsive: [
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        } ]
+    });
+    
+    
+    </script>
 
-jQuery('#<?php echo $id; ?> .acf-innerblocks-container').slick({
-  slidesToShow: <?php echo $slides_to_show; ?>,
-  slidesToScroll: 1,
-  dots: <?php echo $slides_dots_bool; ?>,
-  arrows: <?php echo $slides_arrows_bool; ?>,
-  fade: <?php echo $slides_fade_bool; ?>,
-  autoplay: true,
-  infinite: false,
-  speed: 500,
-  
-  responsive: [
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    } ]
-});
-
-
-</script>
+<?php } ?>
