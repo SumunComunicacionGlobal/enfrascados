@@ -71,12 +71,12 @@ require get_template_directory() . '/inc/smn_nav.php';
 require get_template_directory() . '/inc/smn_register-blocks.php';
 
 // Shortcodes
-require get_template_directory() . '/inc/smn_shortcodes.php';
+// require get_template_directory() . '/inc/smn_shortcodes.php';
 
 // WooCommerce
-require get_template_directory() . '/inc/smn_woocommerce.php';
-require get_template_directory() . '/inc/smn_woocommerce-cif.php';
-require get_template_directory() . '/inc/smn_schema.php';
+// require get_template_directory() . '/inc/smn_woocommerce.php';
+// require get_template_directory() . '/inc/smn_woocommerce-cif.php';
+// require get_template_directory() . '/inc/smn_schema.php';
 
 // Dummy content only for development
 // require get_template_directory() . '/inc/smn-dummy-content.php';

@@ -4,11 +4,13 @@ defined( 'ABSPATH' ) || exit;
 
 define( 'MINIMUM_CART_AMOUNT_FOR_INVOICE', 400 );
 
-add_filter('woocommerce_checkout_fields', 'smn_override_checkout_fields');
-function smn_override_checkout_fields($fields) {
-    $fields['billing']['billing_company']['label'] = __( 'DNI/CIF' );
-    return $fields;
-}
+if ( !function_exists( 'smn_override_checkout_fields' ) ) :
+    add_filter('woocommerce_checkout_fields', 'smn_override_checkout_fields');
+    function smn_override_checkout_fields($fields) {
+        $fields['billing']['billing_company']['label'] = __( 'DNI/CIF' );
+        return $fields;
+    }
+endif;
 
 add_filter( 'woocommerce_checkout_fields', 'smn_agregar_campo_factura_y_modificar_checkout_fields' );
 function smn_agregar_campo_factura_y_modificar_checkout_fields( $fields ) {

@@ -159,6 +159,10 @@ function smn_agregar_schema_product_single() {
 		global $product;
         global $post;
 
+        if ( !$product || !is_a( $product, 'WC_Product' ) ) {
+            return;
+        }
+
         $product_name = esc_html( $post->post_title );
         $product_image_url = get_the_post_thumbnail_url();
         $product_short_description = strip_tags( get_the_excerpt() );
