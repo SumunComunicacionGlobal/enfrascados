@@ -76,9 +76,10 @@ require get_template_directory() . '/inc/smn_shortcodes.php';
 // WooCommerce
 require get_template_directory() . '/inc/smn_woocommerce.php';
 require get_template_directory() . '/inc/smn_woocommerce-cif.php';
+require get_template_directory() . '/inc/smn_schema.php';
 
 // Dummy content only for development
-require get_template_directory() . '/inc/smn-dummy-content.php';
+// require get_template_directory() . '/inc/smn-dummy-content.php';
 
 /* Quitar <p> y <br/> de Contact Form 7 */
 add_filter('wpcf7_autop_or_not', '__return_false');
