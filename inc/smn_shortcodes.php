@@ -73,6 +73,9 @@ function mostrar_subcategorias_producto($atts) {
 
         // Verificar si hay subcategorías
         if ($subcategorias) {
+
+            $output = '';
+            
             $output = '<div class="wp-block-grid">';
             $output .= '<div style="height:100px" aria-hidden="true" class="wp-block-spacer hidden-mobile hidden-tablet"></div>';
             $output .= '<div class="wp-block-group wp-block-subcategories-shortcode has-secondary-80-color has-text-color is-vertical is-layout-flex wp-block-group-is-layout-flex">';
@@ -167,6 +170,70 @@ function smn_product_categories_by_id( $atts ) {
     return $output;
 }
 add_shortcode( 'product_categories_by_id', 'smn_product_categories_by_id' );
+
+
+add_shortcode('slider', 'smn_slider');
+function smn_slider() {
+		
+    $args = array(
+        'post_type' => 'slide',
+        'posts_per_page' => -1,
+        'orderby' => 'menu_order',
+        'order' => 'ASC',
+    );
+
+    $query = new WP_Query($args);
+
+    $r = '';
+
+    if ($query->have_posts()) {
+
+        $r .= '<div id="slider-homepage" class="alignfull">';
+
+        // SLICK SLIDER
+
+            $r .= '<div class="slick-slider">';
+
+            while ($query->have_posts()) {
+
+                $query->the_post();
+
+                $r .= '<div class="slick-slide">';
+                    $r .= '<div class="slick-slide--content">';
+                        $r .= get_the_content();
+                    $r .= '</div>';
+                $r .= '</div>';
+            }
+
+            $r .= '</div>';
+
+        $r .= '</div>';
+
+        ob_start();
+        ?>
+
+        <script>
+            jQuery('.slick-slider').slick({
+                autoplay: true,
+                autoplaySpeed: 5000,
+                arrows: true,
+                dots: false,
+                fade: true,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                speed: 1000,
+            });
+        </script>
+
+        <?php
+        $r .= ob_get_clean();
+
+    }
+
+    wp_reset_postdata();
+	
+	return $r;
+}
 
 
 //function mostrar_productos_categoria_actual($atts) {

@@ -159,7 +159,7 @@ function smn_agregar_schema_product_single() {
 		global $product;
         global $post;
 
-        if ( !$product || !is_a( $product, 'WC_Product' ) ) {
+        if ( !$product || $product == null || !is_a( $product, 'WC_Product' ) ) {
             return;
         }
 
@@ -192,6 +192,11 @@ function smn_agregar_schema_product_single() {
             $related_products = '[';
             foreach ( $product_cross_sells as $product_id ) {
                 $product_obj = get_post( $product_id );
+
+                if ( ! $product_obj ) {
+                    continue;
+                }
+                
                 $related_products .= '{
                     "@type": "Product",
                     "name": "'. $product_obj->post_title . '",
