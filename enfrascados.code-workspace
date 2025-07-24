@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../plugins/wc-apg-nifcifnie-field"
+		},
+		{
+			"path": "../../plugins/woocommerce"
+		}
+	],
+	"settings": {}
+}

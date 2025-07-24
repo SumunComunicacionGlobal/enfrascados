@@ -4,7 +4,7 @@ Theme URI: https://sumun.net
 Author: Sumun
 Author URI: https://sumun.net
 Description: Enfrascados Full site editing Theme
-Version: 1.5.0
+Version: 1.5.4
 Tested up to: 8.2
 Requires PHP: 7.2
 License: GNU General Public License v2 or later
@@ -60,6 +60,8 @@ Use it to make something cool, have fun, and share what you've learned.
 @import "woocommerce/icons";
 @import "woocommerce/products";
 @import "woocommerce/tabs";
+@import "woocommerce/account";
+@import "woocommerce/checkout";
 
 
 /*--------------------------------------------------------------

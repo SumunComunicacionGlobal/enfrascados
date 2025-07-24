@@ -32,3 +32,12 @@
 .wpcf7-acceptance .wpcf7-list-item {
 	margin: 0;
 }
+
+input[type="radio"] {
+	float: left;
+	margin-right: 8px;
+	margin-top: .25em;
+}
+input[type="radio"] + label {
+	line-height: 1.2 !important;
+}

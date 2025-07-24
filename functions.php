@@ -71,12 +71,12 @@ require get_template_directory() . '/inc/smn_nav.php';
 require get_template_directory() . '/inc/smn_register-blocks.php';
 
 // Shortcodes
-// require get_template_directory() . '/inc/smn_shortcodes.php';
+require get_template_directory() . '/inc/smn_shortcodes.php';
 
 // WooCommerce
-// require get_template_directory() . '/inc/smn_woocommerce.php';
-// require get_template_directory() . '/inc/smn_woocommerce-cif.php';
-// require get_template_directory() . '/inc/smn_schema.php';
+require get_template_directory() . '/inc/smn_woocommerce.php';
+require get_template_directory() . '/inc/smn_woocommerce-cif.php';
+require get_template_directory() . '/inc/smn_schema.php';
 
 // Dummy content only for development
 // require get_template_directory() . '/inc/smn-dummy-content.php';
@@ -97,17 +97,19 @@ function get_term_class($class, $term_id = 0, $taxonomy = '') {
     $classes = is_array($class) ? $class : explode(' ', $class);
     $term_id = (int) $term_id;
 
-    if (!$term_id) {
+    if (!$term_id && is_tax()) {
         $term = get_queried_object();
         if ($term instanceof WP_Term && !is_wp_error($term)) {
             $term_id = $term->term_id;
             $taxonomy = $term->taxonomy;
         }
-    }
+    } else {
 
-    $term = get_term($term_id, $taxonomy);
+    	$term = get_term($term_id, $taxonomy);
 
-    if ($term instanceof WP_Term && !is_wp_error($term)) {
+	}
+
+    if ( $term && $term instanceof WP_Term && !is_wp_error($term)) {
         $classes[] = $term->taxonomy . '-' . $term->slug;
     }
 
@@ -137,3 +139,5 @@ if ( ! function_exists( 'woocommerce_template_loop_product_title' ) ) {
 		echo '<h3 class="woocommerce-loop-product__title">' . get_the_title() . '</h3>';
 	}
 }
+
+add_filter('woocommerce_api_request_should_validate_authentication', '__return_false');

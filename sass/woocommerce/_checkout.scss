@@ -1,0 +1,23 @@
+.woocommerce form .form-row .woocommerce-input-wrapper .description {
+    display: block !important;
+    background: var(--wp--preset--color--secondary);
+    font-size: var(--wp--preset--font-size--small);
+}
+
+.woocommerce form .form-row .woocommerce-input-wrapper .description::before {
+    border-color: var(--wp--preset--color--secondary) transparent transparent transparent
+}
+
+#error_vies_billing,
+#error_vat_billing {
+    border: 1px solid var(--wp--preset--color--vivid-red);
+    padding: .5em;
+    border-radius: var(--wc-form-border-radius);
+    margin-top: .5em;
+    color: var(--wp--preset--color--white);
+    background-color: var(--wp--preset--color--vivid-red);
+}
+
+#billing_nif_field {
+    clear: both;
+}

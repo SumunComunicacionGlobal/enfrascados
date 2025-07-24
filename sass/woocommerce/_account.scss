@@ -1,0 +1,35 @@
+.woocommerce-account {
+
+    .woocommerce-MyAccount-navigation {
+        border-radius: var(--wp--custom--border-radius--md);
+        border: 1px solid var(--wp--custom--color--neutral-20);
+
+
+        li {
+            padding: .5rem 0;
+            text-transform: uppercase;
+            font-family: var(--wp--preset--font-family--mudstone);
+            font-size: 1.5rem;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid var(--wp--custom--color--neutral-20);
+            }
+
+            &.is-active {
+
+                a {
+                    text-decoration: none;
+                    color: var(--wp--custom--color--foreground);
+                }
+            }
+        }
+
+        form {
+
+            > h2:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+
+}

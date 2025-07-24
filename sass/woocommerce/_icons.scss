@@ -78,4 +78,10 @@ button.single_add_to_cart_button {
         width: 1.5rem;
         height: 1.5rem;
     }
+
+    &.adding::after,
+    &.added::after {
+        content: none;
+    }
+
 }

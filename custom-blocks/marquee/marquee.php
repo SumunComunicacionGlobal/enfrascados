@@ -29,7 +29,7 @@ if ( ! empty( $block['align'] ) ) {
 
 <div id="<?php echo $id; ?>" <?php echo get_block_wrapper_attributes(); ?>>
     <div class="wp-block-acf-marquee__inner">
-        <?php echo esc_html($content); ?>
+        <?php echo do_shortcode( esc_html($content) ); ?>
     </div>
 </div>
 

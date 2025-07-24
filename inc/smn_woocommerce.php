@@ -3,6 +3,7 @@
 // Change icon from Woocommerce Blocks: customer-account, mini-cart
 add_filter('render_block', 'woo_icon_account_render_block_core', null, 2);
 
+
 function woo_icon_account_render_block_core (string $block_content, array $block)
 {
 	if ( 
@@ -67,3 +68,34 @@ function wcsuccess_remove_all_product_tabs(string $block_content, array $block) 
 
 	return $block_content;
 }
+
+// add_filter('woocommerce_loop_add_to_cart_link', function($button, $product, $args = array()) {
+// 	// Add a unique class to the add to cart button
+// 	$button = str_replace('class="', 'class="js-add-to-cart ', $button);
+// 	return $button;
+// }, 10, 3);
+
+add_action('wp_footer', function() {
+	?>
+	<script>
+	(function($){
+		$(document).on('click', '.single_add_to_cart_button', function(e){
+			var $btn = $(this);
+			$btn.addClass('adding');
+		});
+
+		// For AJAX add to cart (archive/products)
+		$(document.body).on('added_to_cart', function(e, fragments, cart_hash, $button){
+			if($button && $button.length){
+				$button.removeClass('adding');
+			}
+		});
+
+		// For single product add to cart
+		$(document.body).on('ajax_add_to_cart', function(){
+			$('.single_add_to_cart_button.adding').removeClass('adding');
+		});
+	})(jQuery);
+	</script>
+	<?php
+});
