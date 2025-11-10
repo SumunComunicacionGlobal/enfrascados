@@ -33,6 +33,8 @@ function smn_agregar_campo_factura_y_modificar_checkout_fields( $fields ) {
 
     if ( $cart_total > MINIMUM_CART_AMOUNT_FOR_INVOICE ) {
         $fields['billing']['billing_nif']['required'] = true;
+        global $apg_nif_settings;
+        $apg_nif_settings[ 'requerido' ] = 1;
         return $fields;
     }
 
