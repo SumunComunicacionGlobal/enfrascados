@@ -48,7 +48,7 @@ function add_content_below_to_products_block() {
 
 
 // Elimina todas las tabs existentes y las sustituye por un acordeón
-add_filter('render_block', 'wcsuccess_remove_all_product_tabs', null, 2);
+// add_filter('render_block', 'wcsuccess_remove_all_product_tabs', null, 2);
 
 function wcsuccess_remove_all_product_tabs(string $block_content, array $block) {
 	if (
