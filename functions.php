@@ -140,4 +140,29 @@ if ( ! function_exists( 'woocommerce_template_loop_product_title' ) ) {
 	}
 }
 
+add_filter( 'render_block', 'update_post_title_block', 10, 2 );
+function update_post_title_block( $block_content, $block ) {
+    if ( 'core/post-title' !== $block['blockName'] ) {
+        return $block_content;
+    }
+ 
+    if ( isset( $block['attrs']['level'] ) && 0 === $block['attrs']['level'] ) {
+        return preg_replace(
+            '/' . preg_quote( 'h0', '/' ) . '/',
+            'p',
+            $block_content,
+            1
+        );
+    }
+ 
+    return $block_content;
+}
+
 add_filter('woocommerce_api_request_should_validate_authentication', '__return_false');
+
+// No guardar el spam de Contact Form 7 en Flamingo
+add_filter( 'wpcf7_flamingo_submit_if', function($cases) {
+	$cases = array_diff( $cases, ['spam'] );
+	return $cases;
+});
+

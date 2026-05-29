@@ -7,3 +7,14 @@
 	line-height: var(--wp--custom--line-height--tiny);
 }
 
+.post-title-subtitle {
+	color: var(--wp--preset--color--secondary-80);
+	font-size: .8em;
+}
+
+@media ($below-mobile) {
+	.texto-centrado-movil {
+		text-align: center;
+		justify-content: center;
+	}
+}

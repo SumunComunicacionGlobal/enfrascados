@@ -235,6 +235,129 @@ function smn_slider() {
 	return $r;
 }
 
+add_shortcode('texto_promo_top_bar', 'obtener_texto_promo_top_bar');
+function obtener_texto_promo_top_bar() {
+    $texto = get_field('texto_promo_top_bar', 'option');
+    if (!empty($texto)) {
+        return $texto;
+    } else {
+        return 'Enfrascados.shop';
+    }
+}
+
+add_shortcode( 'cross_sells', 'smn_cross_sells' );
+function smn_cross_sells() {
+	
+	global $product;
+	if ( !$product || $product == null || !is_a( $product, 'WC_Product' ) ) return false;
+
+	$cross_sells = $product->get_cross_sell_ids();
+	
+	if ( !$cross_sells) return false;
+	
+	$r = '';
+	
+	$r .= '<section id="cross-sells" class="cross-sells crosssells products">';
+	
+			$heading = apply_filters( 'woocommerce_product_cross_sells_products_heading', __( 'Productos compatibles', 'smn' ) );
+
+		if ( $heading ) :
+
+			$r .= '<h2>' . esc_html( $heading ) . '</h2>';
+		
+		endif;
+
+		$r .= wpautop( __( 'Los tarros no incluyen la tapa cuando es de rosca. Consulta aquí los productos que hacen match.', 'smn' ) );
+	
+		$r .= '<ul class="products columns-4">';
+	
+		foreach ( $cross_sells as $cross_sell_id ) :
+
+			$post_object = get_post( $cross_sell_id );
+
+			setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+
+			ob_start();
+			wc_get_template_part( 'content', 'product' );
+			$r .= ob_get_clean();
+			// $r .= get_the_title();
+
+		endforeach;
+	
+		$r .= '</ul>';
+
+	$r .= '</section>';
+	
+	
+	return $r;
+	
+}
+
+add_shortcode( 'cross_sells_link', 'smn_cross_sells_link' );
+function smn_cross_sells_link() {
+	
+	global $product;
+	$r = '';
+
+	if (has_term( 135, 'product_cat', $product->get_id())) {
+		// Tiene la categoría de tarros
+		$r = sprintf( __( 'Tapas no incluidas. Consulta los %sproductos compatibles%s', 'smn'), '<a href="#cross-sells">', '</a>' );
+	} else {
+		// El producto no tiene la categoría
+	}
+	
+	
+	return $r;
+	
+}
+
+// Hook para mostrar productos cross-selling después de la notificación.
+//add_action( 'xoo_cp_before_btns', 'smn_mostrar_cross_sell_productos', 20 );
+function smn_mostrar_cross_sell_productos() {
+	// if ( !current_user_can('manage_options') ) return false;
+
+	global $product;
+	if ( !$product || $product == null || !is_a( $product, 'WC_Product' ) ) return false;
+
+	$cross_sells = $product->get_cross_sell_ids();
+	
+	if ( !$cross_sells) return false;
+	
+	$r = '';
+	
+	$r .= '<section id="cross-sells" class="cross-sells crosssells products">';
+	
+			$heading = apply_filters( 'woocommerce_product_cross_sells_products_heading', __( 'Productos compatibles', 'smn' ) );
+
+		if ( $heading ) :
+
+			$r .= '<h2>' . esc_html( $heading ) . '</h2>';
+		
+		endif;
+
+		$r .= wpautop( __( 'Los tarros no incluyen la tapa cuando es de rosca. Consulta aquí los productos que hacen match.', 'smn' ) );
+	
+		$r .= '<ul class="products columns-4">';
+	
+		foreach ( $cross_sells as $cross_sell_id ) :
+
+			$post_object = get_post( $cross_sell_id );
+
+			setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+
+			ob_start();
+			wc_get_template_part( 'content', 'product' );
+			$r .= ob_get_clean();
+
+		endforeach;
+	
+		$r .= '</ul>';
+
+	$r .= '</section>';
+	
+	
+	echo $r;	
+}
 
 //function mostrar_productos_categoria_actual($atts) {
 //    // Obtén la categoría actual

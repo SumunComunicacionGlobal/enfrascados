@@ -4,8 +4,13 @@
         border-left: 0;
         margin: var(--wp--preset--spacing--20);
     
-        p.has-heading-4-font-size {
-            margin-top: 0;
+        p {
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+
+            &.has-heading-4-font-size {
+                margin-top: 0;
+            }
         }
     }
 }

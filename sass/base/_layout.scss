@@ -2,10 +2,6 @@
     padding: var(--wp--custom--layout--block-gap);
 }
 
-.mt-0 {
-    margin-block-start: 0;
-}
-
 body .is-layout-flow {
 
     & > .wp-block-image.alignright {
@@ -17,3 +13,29 @@ body .is-layout-flow {
     }
 
 } 
+
+.wp-site-blocks > header {
+	position: sticky;
+	top: 0;
+	z-index: 1050;
+    
+    + header {
+        position: relative;
+        z-index: unset;
+        top: unset;
+    }
+}
+
+img {
+	max-width: 100% !important;
+}
+
+.wp-video-shortcode {
+	max-height: 80vh !important;
+}
+
+@media (min-height: 800px) {
+    .wp-video-shortcode {
+        max-height: 720px !important;
+    }
+}

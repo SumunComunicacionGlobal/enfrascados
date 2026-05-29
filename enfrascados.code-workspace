@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../../plugins/woocommerce"
+		},
+		{
+			"path": "../../plugins"
 		}
 	],
 	"settings": {}

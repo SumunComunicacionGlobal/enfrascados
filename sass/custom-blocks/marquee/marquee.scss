@@ -1,6 +1,10 @@
 .wp-block-acf-marquee {
     overflow: hidden;
     white-space: nowrap;
+
+    a {
+        text-decoration: none;
+    }
 }
 .wp-block-acf-marquee__inner {
     display: inline-block;

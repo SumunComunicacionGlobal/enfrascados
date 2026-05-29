@@ -2,6 +2,36 @@
 
 remove_action('wp_head', 'wp_generator');
 
+
+add_action( 'wp_body_open', 'smn_connectif_contact_form_7', 1 );
+function smn_connectif_contact_form_7() { ?>
+	
+	<script async id="__cn_generic_script__dca3e662-ad2d-4cfc-8c61-b86557bcb37a">!function(e){function t(){if(!e.querySelector("#__cn_client_script_dca3e662-ad2d-4cfc-8c61-b86557bcb37a")){var t=e.createElement("script");t.setAttribute("src","https://cdn.connectif.cloud/eu8/client-script/dca3e662-ad2d-4cfc-8c61-b86557bcb37a"),e.body.appendChild(t)}}"complete"===e.readyState||"interactive"===e.readyState?t():e.addEventListener("DOMContentLoaded",t)}(document);</script>
+
+<?php }
+
+
+add_action( 'wp_head' , 'smn_add_to_favorites' );
+function smn_add_to_favorites() { ?>
+	<script>
+		function addToFavorites() {
+			var url = window.location.href;
+			var title = document.title;
+
+			if (window.sidebar && window.sidebar.addPanel) { // Firefox <23
+				window.sidebar.addPanel(title, url, '');
+			} else if (window.external && ('AddFavorite' in window.external)) { // IE Favorites
+				window.external.AddFavorite(url, title);
+			} else if (window.opera && window.print) { // Opera Hotlist
+				this.title = title;
+				return true;
+			} else { // Other browsers (mainly WebKit - Chrome/Safari)
+				alert('Presiona ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Cmd' : 'Ctrl') + ' + D para añadir esta página a tus favoritos.');
+			}
+		}
+	</script>
+<?php }
+
 /**
  * Enqueue scripts and styles.
  */

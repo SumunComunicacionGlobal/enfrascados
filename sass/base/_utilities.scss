@@ -28,6 +28,11 @@ a.stretched-link {
     }
 }
 
-.dnone {
+.dnone,
+.d-none {
     display: none !important;
+}
+
+.mt-0 {
+    margin-block-start: 0;
 }

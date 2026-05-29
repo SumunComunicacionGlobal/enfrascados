@@ -55,13 +55,13 @@ textarea {
 }
 
 
-input[type="number"] {
-	-moz-appearance: textfield;
-	-webkit-appearance: textfield;
-	appearance: textfield;
+// input[type="number"] {
+// 	-moz-appearance: textfield;
+// 	-webkit-appearance: textfield;
+// 	appearance: textfield;
 
-	&::-webkit-outer-spin-button,
-	&::-webkit-inner-spin-button {
-		display: none;
-	}
-}
+// 	&::-webkit-outer-spin-button,
+// 	&::-webkit-inner-spin-button {
+// 		display: none;
+// 	}
+// }

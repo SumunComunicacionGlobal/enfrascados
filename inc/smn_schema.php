@@ -172,13 +172,15 @@ function smn_agregar_schema_product_single() {
         if ( ! $primary_category_id ) {
             $primary_category_id = wc_get_product_cat_ids( get_the_ID() )[0];
         }
-        $product_category = get_term( $primary_category_id, 'product_cat' )->name;
+        $term = get_term( $primary_category_id, 'product_cat' );
+        $product_category = ( $term && ! is_wp_error( $term ) ) ? $term->name : '';
         $primary_category_ancestors = get_ancestors( $primary_category_id, 'product_cat' );
         if ( $primary_category_ancestors ) {
             $primary_category_ancestors = array_reverse( $primary_category_ancestors );
             $hierarchy = array();
             foreach ( $primary_category_ancestors as $ancestor_id ) {
-                $ancestor = get_term( $ancestor_id, 'product_cat' )->name;
+                $ancestor_term = get_term( $ancestor_id, 'product_cat' );
+                $ancestor = ( $ancestor_term && ! is_wp_error( $ancestor_term ) ) ? $ancestor_term->name : '';
                 $hierarchy[] = $ancestor;
             }
             $hierarchy[] = $product_category;
