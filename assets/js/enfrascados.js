@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Comprobar si hay parámetros de filtro en la URL
-    if (window.location.search.indexOf('orderby') > -1 || window.location.search.indexOf('paged') > -1) {
+    // Comprobar si hay parámetros de filtro en la URL o si la url actual contiene /page/
+    if (window.location.search.indexOf('orderby') > -1 || window.location.search.indexOf('paged') > -1 || window.location.pathname.indexOf('/page/') > -1) {
         // Retrasar la ejecución del código de desplazamiento
         setTimeout(function() {
             // Obtener el bloque de productos

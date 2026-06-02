@@ -100,7 +100,12 @@
 				{
 					"slug": "gray-30",
 					"color": "var(--wp--custom--color--neutral-30)",
-					"name": "Gray"
+					"name": "Gray 30"
+				},
+				{
+					"slug": "gray-60",
+					"color": "var(--wp--custom--color--neutral-60)",
+					"name": "Gray 60"
 				}
 			],
 			"gradients": [],

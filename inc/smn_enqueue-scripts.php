@@ -38,8 +38,9 @@ function smn_add_to_favorites() { ?>
 
  function enfrascados_scripts() {
 
+	$theme_version = wp_get_theme()->get( 'Version' );
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'enfrascados-js', get_template_directory_uri() . '/assets/js/enfrascados.js', array(), true );
+	wp_enqueue_script( 'enfrascados-js', get_template_directory_uri() . '/assets/js/enfrascados.js', array(), $theme_version );
 
 }
 add_action( 'wp_enqueue_scripts', 'enfrascados_scripts' );
