@@ -148,7 +148,7 @@ function smn_product_categories_by_id( $atts ) {
             $link = get_term_link( $category );
 
             // Obtener la imagen de la categoría
-            $thumbnail_id = get_woocommerce_term_meta( $category->term_id, 'thumbnail_id', true );
+            $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
             $image = wp_get_attachment_url( $thumbnail_id );
 
             // Obtener el color de fondo

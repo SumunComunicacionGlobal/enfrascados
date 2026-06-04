@@ -33,12 +33,34 @@ function smn_agregar_schema_product_cat() {
 
         $total_pages = $wp_query->max_num_pages;
         $products_in_current_page = $wp_query->posts;
-        $term_url = get_term_link( get_queried_object() );
+        $queried_object = get_queried_object();
+        $term_url = '';
+        $pagination = array();
+
+        if ( is_product_category() && $queried_object instanceof WP_Term && ! is_wp_error( $queried_object ) ) {
+            $maybe_term_url = get_term_link( $queried_object );
+            if ( ! is_wp_error( $maybe_term_url ) ) {
+                $term_url = $maybe_term_url;
+            }
+        } elseif ( is_shop() ) {
+            $shop_page_id = function_exists( 'wc_get_page_id' ) ? wc_get_page_id( 'shop' ) : 0;
+            if ( $shop_page_id && $shop_page_id > 0 ) {
+                $term_url = get_permalink( $shop_page_id );
+            }
+        }
+
+        if ( empty( $term_url ) ) {
+            $term_url = get_pagenum_link( 1 );
+        }
 
         // Create php array and encode it to json
         $products = array();
         foreach ($products_in_current_page as $p) {
             $product = wc_get_product( $p->ID );
+            if ( ! $product || ! is_a( $product, 'WC_Product' ) ) {
+                continue;
+            }
+
             $product_id = $p->ID;
             $product_name = get_the_title( $product_id );
             // remove text from <span to the end of string in $product_name
@@ -58,9 +80,6 @@ function smn_agregar_schema_product_cat() {
             $current_year = date('Y');
             $price_valid_until = $current_year . '-12-31';
             $availability = $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock';
-
-            $pagination = array();
-            
 
             $product_data = array(
                 '@type' => 'Product',
@@ -98,9 +117,9 @@ function smn_agregar_schema_product_cat() {
                 );
 
                 for ($i = 1; $i <= $total_pages; $i++) {
-                    $page_url = get_term_link( get_queried_object() );
+                    $page_url = $term_url;
                     if ( $i > 1 ) {
-                        $page_url = $page_url . 'page/' . $i . '/';
+                        $page_url = trailingslashit( $page_url ) . 'page/' . $i . '/';
                     }
                     $page_name = 'Página ' . $i;
                     $page_data = array(

@@ -16,7 +16,11 @@
     
 <?php
     $tax = get_queried_object();
-    $featured_posts = get_field('fragment_cat_product', $tax);
+    if ( ! ( $tax instanceof WP_Term ) || is_wp_error( $tax ) ) {
+        return;
+    }
+
+    $featured_posts = get_field( 'fragment_cat_product', $tax );
     if( $featured_posts ):
 
         echo '<div class="wp-block-template-part alignfull">';
