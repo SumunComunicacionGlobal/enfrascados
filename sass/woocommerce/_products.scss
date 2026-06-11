@@ -508,3 +508,27 @@ tr.fee {
 	background-color: var(--wp--preset--color--primary) !important;
 }
 
+.woocommerce span.onsale,
+.woocommerce-page span.onsale,
+.wc-block-components-product-sale-badge {
+    background: url('./assets/img/tag-oferta.png') no-repeat center / contain !important;
+    color: transparent !important;
+    font-size: 0;
+    line-height: 0;
+    border: 0;
+    box-shadow: none;
+    min-height: 120px;
+    min-width: 120px;
+    width: 120px;
+    height: 120px;
+    padding: 0;
+    border-radius: 0;
+    transform: rotate(-20deg);
+    transform-origin: center;
+}
+
+.wc-block-components-product-image .wc-block-components-product-sale-badge--align-right {
+    top: -24px;
+    right: -12px;
+}
+
