@@ -79,9 +79,9 @@ function mostrar_subcategorias_producto($atts) {
             $output = '<div class="wp-block-grid">';
             $output .= '<div style="height:100px" aria-hidden="true" class="wp-block-spacer hidden-mobile hidden-tablet"></div>';
             $output .= '<div class="wp-block-group wp-block-subcategories-shortcode has-secondary-80-color has-text-color is-vertical is-layout-flex wp-block-group-is-layout-flex">';
-            $output .= '<p class="has-mudstone-font-family has-heading-2-font-size">' . __("¿Qué tipo de", "smn_admin") . '</p>';
+            $output .= '<p class="has-heading-font-family has-heading-2-font-size">' . __("¿Qué tipo de", "smn_admin") . '</p>';
             $output .= '<h2 class="wp-block-query-title">' . esc_html($categoria_actual->name) . '</h2>';
-            $output .= '<p class="has-mudstone-font-family has-heading-2-font-size">' . __("estás buscando?", "smn_admin") . '</p>';
+            $output .= '<p class="has-heading-font-family has-heading-2-font-size">' . __("estás buscando?", "smn_admin") . '</p>';
             $output .= '</div>';
 
             $output .= '<div class="wc-block-grid has-3-columns has-multiple-rows"><ul class="wc-block-grid__products subcategories-shortcode">';

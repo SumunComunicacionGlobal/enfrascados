@@ -29,7 +29,7 @@
     cursor: pointer;
     cursor: hand; }
   .slick-loading .slick-list {
-    background: #fff url("./ajax-loader.gif") center center no-repeat; }
+    background: #fff url("../../assets/js/slick/ajax-loader.gif") center center no-repeat; }
 
 .slick-slider .slick-track,
 .slick-slider .slick-list {
@@ -85,8 +85,8 @@ p.slick-slide {
 /* Icons */
 @font-face {
   font-family: "slick";
-  src: url("./fonts/slick.eot");
-  src: url("./fonts/slick.eot?#iefix") format("embedded-opentype"), url("./fonts/slick.woff") format("woff"), url("./fonts/slick.ttf") format("truetype"), url("./fonts/slick.svg#slick") format("svg");
+  src: url("../../assets/js/slick/fonts/slick.eot");
+  src: url("../../assets/js/slick/fonts/slick.eot?#iefix") format("embedded-opentype"), url("../../assets/js/slick/fonts/slick.woff") format("woff"), url("../../assets/js/slick/fonts/slick.ttf") format("truetype"), url("../../assets/js/slick/fonts/slick.svg#slick") format("svg");
   font-weight: normal;
   font-style: normal; }
 

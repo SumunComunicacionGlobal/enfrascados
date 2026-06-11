@@ -227,21 +227,65 @@
 			"letterSpacing": false,
 			"fontFamilies": [
 				{
-					"fontFamily": "\"mudstone-sans\", sans-serif",
-					"name": "Mudstone",
-					"slug": "mudstone" 
+					"fontFamily": "\"heading\", sans-serif",
+					"name": "Heading",
+					"slug": "heading",
+					"fontFace": [
+						{
+							"fontDisplay": "swap",
+							"fontFamily": "heading",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "800",
+							"src": [
+								"file:./assets/fonts/heading.woff2"
+							]
+						}
+					]
 				},
-
-                {
-					"fontFamily": "\"salted\", sans-serif", 
-					"name": "Salted",
-					"slug": "heading-small" 
+				{
+					"fontFamily": "\"heading-small\", sans-serif",
+					"name": "Heading Small",
+					"slug": "heading-small",
+					"fontFace": [
+						{
+							"fontDisplay": "swap",
+							"fontFamily": "heading-small",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/heading-small.woff2"
+							]
+						}
+					]
 				},
-
-                {
-					"fontFamily": "\"tenso\", sans-serif",
+				{
+					"fontFamily": "\"main-font\", sans-serif",
 					"name": "Main Font",
-					"slug": "main-font"
+					"slug": "main-font",
+					"fontFace": [
+						{
+							"fontDisplay": "swap",
+							"fontFamily": "main-font",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/main-font.woff2"
+							]
+						},
+						{
+							"fontDisplay": "swap",
+							"fontFamily": "main-font",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/main-font-bold.woff2"
+							]
+						}
+					]
 				}
 			],
             
@@ -357,7 +401,7 @@
 			},
 			"heading": {
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--mudstone)",
+					"fontFamily": "var(--wp--preset--font-family--heading)",
 					"lineHeight": "var(--wp--custom--line-height--headings)"
 				}
 			},
@@ -370,7 +414,7 @@
 			"h2": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--heading-2)",
-					"fontFamily": "var(--wp--preset--font-family--mudstone)"
+					"fontFamily": "var(--wp--preset--font-family--heading)"
 				}
 			},
 			"h3": {
